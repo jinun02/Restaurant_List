@@ -41,7 +41,14 @@
    - async/await와 Promise.all()
    - ?.와 ?? 연산자
 
-7. map_code/99_기존_전체정리_보관.txt
+7. map_code/07_API_불러오기.txt
+   - HTML에서 API 키 설정 파일을 먼저 읽는 순서
+   - 카카오 지도 JavaScript SDK 동적 로딩
+   - 카카오모빌리티 REST API 호출
+   - Google 지도 JavaScript SDK 동적 로딩
+   - script.onload, script.onerror와 callback
+
+8. map_code/99_기존_전체정리_보관.txt
    - 분리 전 전체 문서 원본
    - 빠진 내용을 확인할 때만 참고
 

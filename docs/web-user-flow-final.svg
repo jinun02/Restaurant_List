@@ -1,0 +1,203 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#5ca824"/>
+    </marker>
+    <marker id="arrow-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#333"/>
+    </marker>
+    <style>
+      text{font-family:'Pretendard','Noto Sans KR','Malgun Gothic',sans-serif;fill:#111}
+      .title{font-size:38px;font-weight:800;text-anchor:middle}
+      .subtitle{font-size:16px;fill:#555;text-anchor:middle}
+      .section{font-size:18px;font-weight:800;text-anchor:middle}
+      .label{font-size:16px;font-weight:700;text-anchor:middle;dominant-baseline:middle}
+      .small{font-size:11px;fill:#555;text-anchor:middle}
+      .yn{font-size:14px;font-weight:800}
+      .page{fill:#f8fff2;stroke:#69ad31;stroke-width:2;rx:12}
+      .auth{fill:#fff8ef;stroke:#ee9b3f;stroke-width:2;rx:12}
+      .account{fill:#f0fbf7;stroke:#3ca887;stroke-width:2;rx:12}
+      .admin{fill:#f5fae9;stroke:#83a92f;stroke-width:2;rx:12}
+      .decision{fill:#f2f3ef;stroke:#555;stroke-width:2}
+      .group-auth{fill:#fffdfa;stroke:#ee9b3f;stroke-width:1.8;stroke-dasharray:7 5;rx:18}
+      .group-account{fill:#fbfffd;stroke:#3ca887;stroke-width:1.8;stroke-dasharray:7 5;rx:18}
+      .group-admin{fill:#fdfff8;stroke:#83a92f;stroke-width:1.8;stroke-dasharray:7 5;rx:18}
+      .main-line{fill:none;stroke:#5ca824;stroke-width:4;marker-end:url(#arrow-green)}
+      .line{fill:none;stroke:#333;stroke-width:2.4;marker-end:url(#arrow-dark)}
+      .branch{fill:none;stroke:#555;stroke-width:2}
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="#fff"/>
+  <rect x="14" y="14" width="1572" height="872" fill="none" stroke="#8acb48" stroke-width="20"/>
+  <rect x="25" y="25" width="1550" height="850" fill="none" stroke="#111" stroke-width="2"/>
+
+  <text x="800" y="66" class="title">웹 페이지 흐름도</text>
+  <text x="800" y="94" class="subtitle">사용자 화면 이동 및 권한 분기</text>
+
+  <!-- Top browsing flow -->
+  <path class="main-line" d="M175 165H220"/>
+  <path class="main-line" d="M395 165H440"/>
+  <path class="main-line" d="M585 165H630"/>
+  <path class="main-line" d="M790 165H835"/>
+  <path class="main-line" d="M1010 165H1058"/>
+  <path class="main-line" d="M1158 165H1215"/>
+
+  <rect x="45" y="130" width="130" height="70" class="page"/>
+  <text x="110" y="155" class="label">메인 페이지</text>
+  <text x="110" y="185" class="small">index.html</text>
+
+  <rect x="220" y="130" width="175" height="70" class="page"/>
+  <text x="307" y="165" class="label">통합 검색·지역 선택</text>
+
+  <rect x="440" y="130" width="145" height="70" class="page"/>
+  <text x="512" y="153" class="label">맛집 탐색</text>
+  <text x="512" y="185" class="small">food_page.html</text>
+
+  <rect x="630" y="130" width="160" height="70" class="page"/>
+  <text x="710" y="165" class="label">맛집 목록·지도</text>
+
+  <rect x="835" y="130" width="175" height="70" class="page"/>
+  <text x="922" y="153" class="label">식당 상세 정보</text>
+  <text x="922" y="185" class="small">restaurant_detail.html</text>
+
+  <polygon points="1108,115 1158,165 1108,215 1058,165" class="decision"/>
+  <text x="1108" y="155" class="label">로그인</text>
+  <text x="1108" y="176" class="label">상태?</text>
+  <text x="1178" y="151" class="yn">Y</text>
+  <text x="1120" y="240" class="yn">N</text>
+
+  <path class="branch" d="M1215 165H1410M1285 165V195M1410 165V195"/>
+  <rect x="1215" y="195" width="140" height="52" class="page"/>
+  <text x="1285" y="221" class="label">리뷰·댓글 작성</text>
+  <rect x="1365" y="195" width="140" height="52" class="page"/>
+  <text x="1435" y="221" class="label">즐겨찾기 저장</text>
+
+  <!-- Main content branches -->
+  <path class="branch" d="M110 200V225H55M110 225H165M110 225V300"/>
+  <rect x="35" y="235" width="115" height="38" class="page"/>
+  <text x="92" y="254" class="label">서비스 소개</text>
+  <rect x="160" y="235" width="115" height="38" class="page"/>
+  <text x="217" y="254" class="label">새로운 소식</text>
+  <rect x="78" y="285" width="115" height="38" class="page"/>
+  <text x="135" y="304" class="label">공지사항</text>
+
+  <!-- Login modal from login-state N -->
+  <path class="line" d="M1108 215V285"/>
+  <rect x="1038" y="285" width="140" height="50" class="auth"/>
+  <text x="1108" y="310" class="label">로그인 모달</text>
+
+  <!-- Group backgrounds -->
+  <rect x="35" y="370" width="700" height="470" class="group-auth"/>
+  <rect x="755" y="370" width="420" height="470" class="group-account"/>
+  <rect x="1195" y="370" width="370" height="470" class="group-admin"/>
+  <text x="385" y="400" class="section" fill="#d97706">회원 인증</text>
+  <text x="965" y="400" class="section" fill="#16836a">계정 관리</text>
+  <text x="1380" y="400" class="section" fill="#638719">관리자</text>
+
+  <!-- Login modal split to three auth entries -->
+  <path class="line" d="M1108 335V350H145V430"/>
+  <path class="line" d="M1108 350H385V430"/>
+  <path class="line" d="M1108 350H625V430"/>
+
+  <!-- Login path -->
+  <rect x="85" y="430" width="120" height="48" class="auth"/>
+  <text x="145" y="454" class="label">로그인 입력</text>
+  <path class="line" d="M145 478V505"/>
+  <polygon points="145,505 210,550 145,595 80,550" class="decision"/>
+  <text x="145" y="550" class="label">계정 일치?</text>
+  <text x="157" y="615" class="yn">Y</text>
+  <text x="58" y="541" class="yn">N</text>
+  <path class="line" d="M145 595V625"/>
+  <rect x="85" y="625" width="120" height="48" class="auth"/>
+  <text x="145" y="649" class="label">로그인 성공</text>
+  <path class="line" d="M145 673V700"/>
+  <polygon points="145,700 215,745 145,790 75,745" class="decision"/>
+  <text x="145" y="745" class="label">관리자 여부?</text>
+  <path class="line" d="M80 550H55V454H85"/>
+  <text x="40" y="540" class="small">로그인 실패</text>
+
+  <!-- Signup path -->
+  <rect x="325" y="430" width="120" height="48" class="auth"/>
+  <text x="385" y="447" class="label">회원가입</text>
+  <text x="385" y="470" class="small">signup_page.html</text>
+  <path class="line" d="M385 478V505"/>
+  <polygon points="385,505 450,550 385,595 320,550" class="decision"/>
+  <text x="385" y="550" class="label">입력값 검증?</text>
+  <text x="397" y="615" class="yn">Y</text>
+  <text x="298" y="541" class="yn">N</text>
+  <path class="line" d="M385 595V625"/>
+  <rect x="325" y="625" width="120" height="48" class="auth"/>
+  <text x="385" y="649" class="label">회원정보 저장</text>
+  <path class="line" d="M385 673V700"/>
+  <rect x="325" y="700" width="120" height="48" class="auth"/>
+  <text x="385" y="724" class="label">가입 완료</text>
+  <path class="line" d="M320 550H285V454H325"/>
+  <text x="257" y="540" class="small">오류 메시지</text>
+  <path class="line" d="M385 748V815H1108V335"/>
+
+  <!-- Find account path -->
+  <rect x="565" y="430" width="120" height="48" class="auth"/>
+  <text x="625" y="447" class="label">계정 찾기</text>
+  <text x="625" y="470" class="small">find_account.html</text>
+  <path class="line" d="M625 478V530"/>
+  <rect x="535" y="530" width="180" height="58" class="auth"/>
+  <text x="625" y="552" class="label">아이디 찾기·</text>
+  <text x="625" y="573" class="label">비밀번호 재설정</text>
+  <path class="line" d="M625 588V805H1085V335"/>
+
+  <!-- Admin decision routes -->
+  <path class="line" d="M215 745H760V454H900"/>
+  <text x="235" y="733" class="yn">N</text>
+  <path class="line" d="M145 790V830H1380V430"/>
+  <text x="158" y="818" class="yn">Y</text>
+
+  <!-- Account zone -->
+  <rect x="900" y="430" width="130" height="48" class="account"/>
+  <text x="965" y="454" class="label">사용자 메뉴</text>
+  <path class="branch" d="M965 478V505H850V530M965 505H1080V530"/>
+  <rect x="785" y="530" width="130" height="54" class="account"/>
+  <text x="850" y="548" class="label">개인정보 변경</text>
+  <text x="850" y="575" class="small">my_info.html</text>
+  <path class="line" d="M850 584V610"/>
+  <polygon points="850,610 915,652 850,694 785,652" class="decision"/>
+  <text x="850" y="643" class="label">비밀번호</text>
+  <text x="850" y="664" class="label">재확인?</text>
+  <text x="865" y="713" class="yn">Y</text>
+  <text x="762" y="642" class="yn">N</text>
+  <path class="line" d="M850 694V725"/>
+  <rect x="785" y="725" width="130" height="48" class="account"/>
+  <text x="850" y="749" class="label">회원정보 저장</text>
+  <path class="line" d="M785 652H765V610H785"/>
+  <text x="750" y="690" class="small">인증 실패</text>
+
+  <rect x="1015" y="530" width="130" height="54" class="account"/>
+  <text x="1080" y="548" class="label">내 활동</text>
+  <text x="1080" y="575" class="small">my_activity.html</text>
+  <path class="branch" d="M1080 584V620H1005M1080 620H1150"/>
+  <rect x="955" y="630" width="100" height="42" class="account"/>
+  <text x="1005" y="651" class="label">내 리뷰</text>
+  <rect x="1060" y="630" width="100" height="42" class="account"/>
+  <text x="1110" y="651" class="label">내 댓글</text>
+  <rect x="1007" y="690" width="100" height="42" class="account"/>
+  <text x="1057" y="711" class="label">즐겨찾기</text>
+  <path class="branch" d="M1005 620V630M1110 620V630M1080 620V690H1057"/>
+
+  <!-- Admin zone -->
+  <rect x="1300" y="430" width="160" height="52" class="admin"/>
+  <text x="1380" y="456" class="label">관리자 권한 활성화</text>
+  <path class="branch" d="M1380 482V530H1290M1380 530H1470"/>
+  <rect x="1215" y="545" width="150" height="70" class="admin"/>
+  <text x="1290" y="570" class="label">공지·소식</text>
+  <text x="1290" y="594" class="label">작성·수정·삭제</text>
+  <rect x="1395" y="545" width="150" height="70" class="admin"/>
+  <text x="1470" y="570" class="label">전체 리뷰·댓글</text>
+  <text x="1470" y="594" class="label">삭제</text>
+  <path class="branch" d="M1290 530V545M1470 530V545"/>
+
+  <!-- Legend -->
+  <line x1="1205" y1="805" x2="1255" y2="805" stroke="#5ca824" stroke-width="4" marker-end="url(#arrow-green)"/>
+  <text x="1315" y="809" class="small">주요 화면 이동</text>
+  <polygon points="1435,788 1453,805 1435,822 1417,805" class="decision"/>
+  <text x="1510" y="809" class="small">조건 판단</text>
+</svg>

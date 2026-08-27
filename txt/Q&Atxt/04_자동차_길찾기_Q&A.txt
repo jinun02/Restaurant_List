@@ -1,0 +1,170 @@
+[자동차 길찾기 Q&A]
+
+Q1. 자동차 길찾기는 어떤 API를 사용하나요?
+
+A. 카카오모빌리티 자동차 길찾기 REST API를 사용합니다.
+
+```text
+https://apis-navi.kakaomobility.com/v1/directions
+```
+
+
+Q2. 지도 JavaScript SDK와 길찾기 REST API는 같은 것인가요?
+
+A. 다릅니다. JavaScript SDK는 지도, 마커, 선을 브라우저에 그립니다.
+REST API는 출발지와 도착지를 서버로 보내 계산된 자동차 경로 JSON을
+받는 역할을 합니다.
+
+
+Q3. 출발지와 도착지는 어떤 형식으로 전송하나요?
+
+A. 카카오 길찾기 API 형식인 `경도,위도` 문자열로 보냅니다.
+
+```javascript
+origin: `${origin.longitude},${origin.latitude}`
+```
+
+
+Q4. 왜 위도, 경도가 아니라 경도, 위도 순서인가요?
+
+A. 카카오모빌리티 REST API의 요청 규격이 `x,y`, 즉 경도, 위도
+순서이기 때문입니다. 카카오 지도 `LatLng(위도, 경도)`와 순서가 달라
+혼동하지 않도록 주의해야 합니다.
+
+
+Q5. `URLSearchParams`는 왜 사용하나요?
+
+A. 출발지, 도착지, 경로 우선순위 등의 값을 URL query 문자열로
+안전하게 조립하기 위해 사용합니다.
+
+
+Q6. `priority: 'RECOMMEND'`는 무슨 뜻인가요?
+
+A. 카카오가 추천하는 경로를 요청한다는 뜻입니다.
+
+
+Q7. REST API 인증은 어떻게 하나요?
+
+A. HTTP 요청의 Authorization 헤더에 REST 키를 넣습니다.
+
+```javascript
+headers: {
+    Authorization: `KakaoAK ${getApiKey()}`
+}
+```
+
+`KakaoAK`와 실제 키 사이에는 공백이 필요합니다.
+
+
+Q8. `await fetch()`를 사용하는 이유는 무엇인가요?
+
+A. 서버 응답이 도착할 때까지 해당 async 함수의 다음 실행을 기다리고,
+실제 Response 객체를 `response` 변수에 저장하기 위해서입니다.
+
+
+Q9. await가 브라우저 전체를 멈추나요?
+
+A. 아닙니다. 해당 async 함수의 다음 실행만 기다립니다.
+기다리는 동안 브라우저는 화면 표시와 다른 이벤트를 처리할 수 있습니다.
+
+
+Q10. `response.ok`는 무엇인가요?
+
+A. HTTP 상태 코드가 200~299 범위인지 나타내는 Boolean 값입니다.
+성공이면 true, 401·403·404·500 등이면 false입니다.
+
+
+Q11. 401과 403은 어떤 경우인가요?
+
+A. 401은 주로 인증 정보가 올바르지 않은 경우이고,
+403은 API 사용 권한, 애플리케이션 설정 또는 접근 제한 문제일 수 있습니다.
+
+
+Q12. 서버 응답은 어떻게 JavaScript 객체로 바꾸나요?
+
+A. `await response.json()`을 사용합니다.
+
+```javascript
+const data = await response.json();
+```
+
+
+Q13. 추천 경로는 어디에 들어 있나요?
+
+A. 응답 객체의 `routes` 배열에 들어 있습니다.
+프로젝트에서는 첫 번째 추천 경로를 사용합니다.
+
+```javascript
+const route = data.routes?.[0];
+```
+
+
+Q14. `route.result_code !== 0`은 무엇을 검사하나요?
+
+A. HTTP 요청 자체는 성공했지만 실제 경로 계산이 실패했을 수 있습니다.
+result_code가 0인지 확인해 정상 경로가 만들어졌는지 검사합니다.
+
+
+Q15. 실제 경로 좌표는 어디에 있나요?
+
+A. 다음 계층 안의 `vertexes` 배열에 있습니다.
+
+```text
+routes → sections → roads → vertexes
+```
+
+
+Q16. vertexes 배열은 어떤 형태인가요?
+
+A. 경도와 위도가 번갈아 저장된 숫자 배열입니다.
+
+```javascript
+[
+    경도1, 위도1,
+    경도2, 위도2,
+    경도3, 위도3
+]
+```
+
+
+Q17. 반복문의 index가 2씩 증가하는 이유는 무엇인가요?
+
+A. 한 좌표가 경도와 위도 두 숫자로 구성되기 때문입니다.
+`index` 위치에서 경도를 읽고 `index + 1`에서 위도를 읽습니다.
+
+
+Q18. 경로 거리와 시간의 단위는 무엇인가요?
+
+A. `route.summary.distance`는 미터,
+`route.summary.duration`은 초 단위입니다.
+화면에 표시할 때 km와 분 또는 시간으로 변환합니다.
+
+
+Q19. 경로는 지도에 어떻게 그리나요?
+
+A. 경로 좌표를 `kakao.maps.LatLng`으로 변환하고
+`kakao.maps.Polyline`의 path에 전달합니다.
+
+
+Q20. 이전 경로선을 먼저 제거하는 이유는 무엇인가요?
+
+A. 사용자가 새 경로를 검색할 때 과거 경로와 새 경로가 겹치지 않게
+하기 위해 `routePolyline?.setMap(null)`로 이전 선을 제거합니다.
+
+
+Q21. 경로 전체가 지도에 보이게 하는 방법은 무엇인가요?
+
+A. 모든 경로 좌표를 `LatLngBounds`에 추가하고
+`map.setBounds()`를 호출합니다.
+
+
+Q22. 길찾기 버튼을 검색 중에 비활성화하는 이유는 무엇인가요?
+
+A. 사용자의 연속 클릭으로 동일 API 요청이 여러 번 발생하는 것을
+방지하고 현재 검색 중이라는 상태를 명확히 보여주기 위해서입니다.
+
+
+Q23. try/catch/finally는 각각 어떤 역할을 하나요?
+
+A. try에서 API를 요청하고, catch에서 오류 메시지를 표시하며,
+finally에서 성공 여부와 관계없이 버튼을 다시 활성화합니다.

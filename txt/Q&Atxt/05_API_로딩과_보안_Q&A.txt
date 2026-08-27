@@ -1,0 +1,131 @@
+[API 로딩과 보안 Q&A]
+
+Q1. 카카오 지도 API는 어떻게 불러오나요?
+
+A. JavaScript로 script 요소를 만들고 카카오 SDK 주소를 지정한 뒤
+`document.head.appendChild(script)`로 HTML에 추가합니다.
+
+
+Q2. API 키 설정 파일을 먼저 실행하는 이유는 무엇인가요?
+
+A. 지도 코드가 실행될 때 `window.KAKAO_JS_MAPS_API_KEY` 등의 값이
+이미 존재해야 하기 때문입니다. HTML script 태그의 실행 순서가 중요합니다.
+
+
+Q3. window에 키를 저장하는 이유는 무엇인가요?
+
+A. 한 JavaScript 파일에서 저장한 값을 뒤에 실행되는 다른 파일에서
+공유하기 위해서입니다. window는 브라우저의 전역 객체입니다.
+
+
+Q4. 카카오 지도 SDK 주소는 어떤 형태인가요?
+
+A. 다음 형태입니다.
+
+```text
+https://dapi.kakao.com/v2/maps/sdk.js
+?appkey=JavaScript키
+&autoload=false
+```
+
+
+Q5. `document.createElement('script')`는 무엇을 하나요?
+
+A. 메모리 안에 새로운 script 요소를 만듭니다.
+이 단계에서는 아직 외부 SDK 다운로드가 시작되지 않습니다.
+
+
+Q6. 실제 SDK 다운로드는 언제 시작되나요?
+
+A. `document.head.appendChild(script)`로 script 요소를 실제 HTML head에
+추가하는 순간 브라우저가 `script.src` 주소를 다운로드합니다.
+
+
+Q7. `script.async = true`는 무엇인가요?
+
+A. SDK 다운로드가 HTML 처리와 다른 화면 작업을 막지 않게 합니다.
+다운로드 완료 시점은 `onload`나 callback으로 처리합니다.
+
+
+Q8. `script.onload`는 언제 실행되나요?
+
+A. 외부 JavaScript SDK 파일 다운로드가 성공했을 때 실행됩니다.
+카카오 지도에서는 그 후 `kakao.maps.load(initFoodMap)`을 호출합니다.
+
+
+Q9. `script.onerror`는 언제 실행되나요?
+
+A. 네트워크 문제, 잘못된 주소, 요청 차단 등으로 SDK 파일 자체를
+다운로드하지 못했을 때 실행됩니다.
+
+
+Q10. `autoload=false`를 사용하는 이유는 무엇인가요?
+
+A. SDK 다운로드 직후 자동 초기화하지 않고,
+`kakao.maps.load()`를 호출해 준비 완료 시점을 직접 제어하기 위해서입니다.
+
+
+Q11. SDK가 이미 로드됐는지는 어떻게 확인하나요?
+
+A. `window.kakao?.maps`가 존재하는지 검사합니다.
+이미 있으면 script를 다시 추가하지 않고 바로 지도 초기화를 시작합니다.
+
+
+Q12. JavaScript SDK와 REST API 호출 방식은 어떻게 다른가요?
+
+A. SDK는 script 파일을 다운로드해 지도 클래스와 함수를 사용할 수 있게
+합니다. REST API는 `fetch()`로 서버에 요청하고 JSON 데이터를 받습니다.
+
+
+Q13. Google 지도 SDK의 callback은 무엇인가요?
+
+A. SDK 다운로드가 끝난 후 Google이 호출할 전역 함수 이름입니다.
+
+```javascript
+window.initHomepageMap = initHomepageMap;
+```
+
+URL에는 `callback=initHomepageMap`을 전달합니다.
+
+
+Q14. `encodeURIComponent(apiKey)`를 사용하는 이유는 무엇인가요?
+
+A. 키 값을 URL query 안에 안전하게 넣을 수 있도록 인코딩하기 위해서입니다.
+
+
+Q15. SDK 다운로드 실패와 인증 실패는 어떻게 다른가요?
+
+A. 다운로드 실패는 외부 JavaScript 파일을 받지 못한 경우입니다.
+인증 실패는 SDK는 받았지만 API 키나 도메인 설정이 거부된 경우입니다.
+
+
+Q16. 브라우저 JavaScript의 API 키는 숨길 수 있나요?
+
+A. 완전히 숨길 수 없습니다. 브라우저가 키를 사용하려면 사용자가 개발자
+도구나 네트워크 요청에서 확인할 수 있습니다.
+
+
+Q17. JavaScript 지도 키는 어떻게 보호해야 하나요?
+
+A. 카카오나 Google 콘솔에서 허용 도메인과 사용할 API를 제한해야 합니다.
+노출되더라도 등록하지 않은 사이트에서 사용할 수 없게 만드는 방식입니다.
+
+
+Q18. REST API 키를 프런트엔드에서 사용해도 안전한가요?
+
+A. 공개 서비스에서는 권장되지 않습니다. REST 키가 브라우저 코드와
+네트워크 요청에 노출될 수 있기 때문입니다. 서버가 키를 보관하고
+프런트엔드 대신 카카오 API를 호출하는 구조가 더 안전합니다.
+
+
+Q19. `.gitignore`에 설정 파일을 넣으면 완전히 안전한가요?
+
+A. 새 커밋을 막는 데는 도움이 되지만 이미 커밋한 키는 Git 기록에
+남을 수 있습니다. 노출된 키는 폐기하고 새 키를 발급해야 합니다.
+
+
+Q20. API 키 형식을 정규식으로 확인하는 이유는 무엇인가요?
+
+A. 빈 값이나 명백히 잘못된 값을 서버에 보내기 전에 사용자에게
+설정 오류를 안내하기 위해서입니다. 형식 검사는 실제 인증 성공을
+보장하지는 않습니다.

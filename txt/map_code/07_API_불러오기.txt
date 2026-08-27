@@ -1,0 +1,686 @@
+[07. 지도 API를 불러오는 방법]
+
+이 문서는 프로젝트가 카카오 지도와 Google 지도 API를
+어떤 순서로 불러오는지 실제 코드를 기준으로 설명한다.
+
+API를 불러오는 방식은 크게 두 종류다.
+
+1) JavaScript SDK 불러오기
+   지도 화면과 마커를 브라우저에서 만들 때 사용한다.
+
+2) REST API 호출하기
+   출발지와 도착지를 서버에 보내 자동차 경로를 받을 때 사용한다.
+
+
+============================================================
+1. 전체 API 로딩 순서
+============================================================
+
+[맛집 탐색 페이지]
+
+```text
+food_page.html 실행
+→ map-config-KakaoJS.js 실행
+→ JavaScript 지도 키를 window에 저장
+→ map-config-KakaoRest.js 실행
+→ REST API 키를 window에 저장
+→ restaurantMap.js 실행
+→ 카카오 지도 JavaScript SDK 다운로드
+→ 카카오 지도 생성
+→ directionsService.js 실행
+→ 사용자가 길찾기를 누르면 REST API 호출
+```
+
+[메인 페이지]
+
+```text
+index.html 실행
+→ map-config.js 실행
+→ Google 지도 키를 window에 저장
+→ restaurant_homepageMap.js 실행
+→ Google 지도 JavaScript SDK 다운로드
+→ 메인 페이지 미니 지도 생성
+```
+
+[음식점 상세 페이지]
+
+```text
+restaurant_detail.html 실행
+→ map-config.js 실행
+→ Google 지도 키를 window에 저장
+→ restaurantDetailMap.js 실행
+→ Google 지도 JavaScript SDK 다운로드
+→ 상세 페이지 미니 지도 생성
+```
+
+
+============================================================
+2. HTML에서 API 설정 파일을 먼저 읽기
+============================================================
+
+// ★ Q&A 예상 질문: API 키 설정 파일이 지도 기능 파일보다 먼저 실행되어야 하는 이유는 무엇인가요?
+
+원본 위치: html/food_page.html 157번째 줄
+
+```html
+<!-- 카카오 지도 JavaScript SDK에서 사용할 키를 먼저 읽는다. -->
+<script src="../js/map-config-KakaoJS.js"></script>
+
+<!-- 카카오모빌리티 REST API에서 사용할 키를 읽는다. -->
+<script src="../js/map-config-KakaoRest.js"></script>
+
+<!-- 위에서 읽은 JavaScript 키로 지도를 불러온다. -->
+<script src="../js/restaurantMap.js"></script>
+
+<!-- 위에서 읽은 REST 키로 자동차 길찾기를 요청한다. -->
+<script src="../js/directionsService.js"></script>
+```
+
+script 태그는 기본적으로 위에서 아래 순서대로 실행된다.
+
+따라서 설정 파일이 기능 파일보다 먼저 있어야 한다.
+
+잘못된 순서
+
+```html
+<!-- restaurantMap.js 실행 시 아직 키가 없다. -->
+<script src="../js/restaurantMap.js"></script>
+<script src="../js/map-config-KakaoJS.js"></script>
+```
+
+올바른 순서
+
+```html
+<!-- 키를 먼저 만들고 지도 코드를 실행한다. -->
+<script src="../js/map-config-KakaoJS.js"></script>
+<script src="../js/restaurantMap.js"></script>
+```
+
+
+============================================================
+3. API 키를 window에 저장하는 이유
+============================================================
+
+// ★ Q&A 예상 질문: API 키를 window에 저장하면 다른 JavaScript 파일에서 어떻게 사용할 수 있나요?
+
+설정 파일의 형태는 다음과 같다.
+
+```javascript
+// 실제 키 값은 문서에 기록하지 않는다.
+window.KAKAO_JS_MAPS_API_KEY = '카카오 JavaScript 키';
+window.Kakao_Rest_API_KEY = '카카오 REST 키';
+window.GOOGLE_MAPS_API_KEY = 'Google 지도 키';
+```
+
+window는 브라우저의 전역 객체다.
+
+한 JavaScript 파일에서 window에 저장한 값은
+뒤에 실행되는 다른 JavaScript 파일에서도 읽을 수 있다.
+
+```javascript
+// 설정 파일에서 저장
+window.KAKAO_JS_MAPS_API_KEY = '키 값';
+
+// restaurantMap.js에서 읽기
+const apiKey = window.KAKAO_JS_MAPS_API_KEY;
+```
+
+주의할 점
+
+- 브라우저 JavaScript에 작성한 키는 사용자에게 보일 수 있다.
+- JavaScript 지도 키에는 허용 도메인 제한을 설정해야 한다.
+- REST 키를 브라우저에서 직접 사용하는 구조는 노출 위험이 있다.
+- 실제 서비스에서는 REST 요청을 서버가 대신 처리하는 편이 안전하다.
+
+
+============================================================
+4. 카카오 지도 JavaScript SDK 불러오기
+============================================================
+
+// ★ Q&A 예상 질문: 카카오 지도 SDK를 script 태그로 동적 로딩하는 전체 순서는 무엇인가요?
+
+원본 위치: js/restaurantMap.js 257번째 줄
+
+```javascript
+function loadKakaoMaps() {
+    // 설정 파일에 저장된 JavaScript 키를 읽는다.
+    // ?.trim()은 값이 있을 때만 앞뒤 공백을 제거한다.
+    const apiKey =
+        window.KAKAO_JS_MAPS_API_KEY?.trim();
+
+    // 카카오 키가 32자리 16진수 형식인지 검사한다.
+    if (!/^[0-9a-f]{32}$/i.test(apiKey || '')) {
+        fail(
+            '유효한 Kakao Maps JavaScript 키가 없어 ' +
+            '지도가 비활성화되었습니다.'
+        );
+        return;
+    }
+
+    // 사용자에게 현재 로딩 상태를 보여준다.
+    status.textContent =
+        '카카오 지도를 불러오는 중입니다…';
+
+    // SDK 로딩이 완료된 후 실제 지도를 생성할 함수다.
+    const start = () =>
+        kakao.maps.load(initFoodMap);
+
+    // 카카오 SDK가 이미 존재하면 다시 다운로드하지 않는다.
+    if (window.kakao?.maps) {
+        return start();
+    }
+
+    // HTML의 <script> 요소를 JavaScript로 새로 만든다.
+    const script = document.createElement('script');
+
+    // 카카오 지도 SDK 다운로드 주소를 지정한다.
+    script.src =
+        'https://dapi.kakao.com/v2/maps/sdk.js' +
+        `?appkey=${encodeURIComponent(apiKey)}` +
+        '&autoload=false';
+
+    // 다른 화면 작업을 막지 않고 SDK를 다운로드한다.
+    script.async = true;
+
+    // SDK 파일 다운로드에 성공하면 start 함수를 실행한다.
+    script.onload = start;
+
+    // SDK 파일 다운로드에 실패하면 오류를 표시한다.
+    script.onerror = () =>
+        fail('Kakao Maps 스크립트를 불러오지 못했습니다.');
+
+    // 완성한 script 태그를 HTML head에 실제로 추가한다.
+    // 이 순간 브라우저가 카카오 SDK 다운로드를 시작한다.
+    document.head.appendChild(script);
+}
+```
+
+
+============================================================
+5. 카카오 SDK 주소 구성 설명
+============================================================
+
+// ★ Q&A 예상 질문: autoload=false를 설정하고 kakao.maps.load()를 직접 호출한 이유는 무엇인가요?
+
+```javascript
+script.src =
+    'https://dapi.kakao.com/v2/maps/sdk.js' +
+    `?appkey=${encodeURIComponent(apiKey)}` +
+    '&autoload=false';
+```
+
+완성되는 주소 형태
+
+```text
+https://dapi.kakao.com/v2/maps/sdk.js
+?appkey=카카오_JavaScript_키
+&autoload=false
+```
+
+각 항목의 의미
+
+```text
+https://dapi.kakao.com/v2/maps/sdk.js
+→ 카카오 지도 JavaScript SDK 파일 주소
+
+appkey
+→ 어떤 카카오 애플리케이션의 요청인지 인증하는 키
+
+encodeURIComponent(apiKey)
+→ 키를 URL에 안전하게 들어갈 문자열로 변환
+
+autoload=false
+→ SDK 다운로드 직후 자동 실행하지 않음
+```
+
+autoload=false를 사용했으므로 다음 코드를 직접 실행한다.
+
+```javascript
+kakao.maps.load(initFoodMap);
+```
+
+SDK 내부 준비가 끝나면 initFoodMap 함수가 호출되고
+그 안에서 실제 kakao.maps.Map 객체가 만들어진다.
+
+
+============================================================
+6. script.onload와 script.onerror
+============================================================
+
+// ★ Q&A 예상 질문: SDK 다운로드 실패와 API 키 인증 실패는 어떻게 구분하나요?
+
+```javascript
+script.onload = start;
+```
+
+브라우저가 외부 SDK 파일을 성공적으로 다운로드하면 실행된다.
+
+일반 함수로 표현하면 다음과 비슷하다.
+
+```javascript
+script.onload = function () {
+    kakao.maps.load(initFoodMap);
+};
+```
+
+다음 코드는 다운로드에 실패했을 때 실행된다.
+
+```javascript
+script.onerror = () =>
+    fail('Kakao Maps 스크립트를 불러오지 못했습니다.');
+```
+
+실패 가능한 상황
+
+- 인터넷 연결 문제
+- 카카오 SDK 서버 접근 실패
+- 잘못된 URL
+- 브라우저 또는 네트워크의 요청 차단
+
+
+============================================================
+7. document.head.appendChild(script)의 의미
+============================================================
+
+// ★ Q&A 예상 질문: createElement()만 호출하면 왜 SDK 다운로드가 시작되지 않나요?
+
+```javascript
+const script = document.createElement('script');
+```
+
+위 코드는 메모리 안에 script 객체만 만든다.
+아직 HTML에 들어간 것은 아니므로 다운로드도 시작되지 않는다.
+
+```javascript
+document.head.appendChild(script);
+```
+
+script 객체를 실제 HTML의 head 안에 추가한다.
+
+결과적으로 브라우저는 다음 HTML이 있는 것처럼 처리한다.
+
+```html
+<head>
+    <script
+        src="https://dapi.kakao.com/v2/maps/sdk.js?..."
+        async>
+    </script>
+</head>
+```
+
+이때부터 SDK 다운로드가 시작된다.
+
+
+============================================================
+8. 카카오모빌리티 REST API 주소
+============================================================
+
+원본 위치: js/directionsService.js 3번째 줄
+
+```javascript
+const DIRECTIONS_ENDPOINT =
+    'https://apis-navi.kakaomobility.com/v1/directions';
+```
+
+ENDPOINT는 API 요청을 받을 서버 주소를 뜻한다.
+
+JavaScript SDK처럼 script 태그로 불러오는 것이 아니다.
+사용자가 길찾기를 실행할 때 fetch()로 서버에 요청한다.
+
+
+============================================================
+9. 카카오 REST API 키 읽기
+============================================================
+
+원본 위치: js/directionsService.js 5번째 줄
+
+```javascript
+function getApiKey() {
+    // 설정 파일에서 REST API 키를 읽고 공백을 제거한다.
+    const apiKey =
+        window.Kakao_Rest_API_KEY?.trim();
+
+    // 32자리 16진수 형식인지 검사한다.
+    if (!/^[0-9a-f]{32}$/i.test(apiKey || '')) {
+        throw new Error(
+            '유효한 Kakao REST API 키가 없습니다.'
+        );
+    }
+
+    return apiKey;
+}
+```
+
+정규식 설명
+
+```text
+^          문자열 시작
+[0-9a-f]   숫자 또는 a~f
+{32}       정확히 32개
+$          문자열 끝
+i          대문자 A~F도 허용
+```
+
+
+============================================================
+10. 카카오 길찾기 REST API 호출
+============================================================
+
+// ★ Q&A 예상 질문: await fetch(), response.ok, response.json()은 어떤 순서로 작동하나요?
+
+원본 위치: js/directionsService.js 15번째 줄
+
+```javascript
+async function findDrivingRoute(origin, destination) {
+    // URL 뒤에 붙일 검색 조건을 만든다.
+    const query = new URLSearchParams({
+        origin:
+            `${origin.longitude},${origin.latitude}`,
+        destination:
+            `${destination.longitude},${destination.latitude}`,
+        priority: 'RECOMMEND',
+        alternatives: 'false',
+        road_details: 'false'
+    });
+
+    // 카카오모빌리티 서버에 HTTP GET 요청을 보낸다.
+    const response = await fetch(
+        `${DIRECTIONS_ENDPOINT}?${query}`,
+        {
+            headers: {
+                // REST 키를 Authorization 요청 헤더에 넣는다.
+                Authorization:
+                    `KakaoAK ${getApiKey()}`
+            }
+        }
+    );
+
+    // 서버 응답 상태가 200~299 범위인지 검사한다.
+    if (!response.ok) {
+        throw new Error(
+            `길찾기 요청에 실패했습니다. (${response.status})`
+        );
+    }
+
+    // JSON 응답 본문이 도착할 때까지 기다린 뒤
+    // JavaScript 객체로 변환한다.
+    const data = await response.json();
+
+    return data;
+}
+```
+
+JavaScript SDK와 REST API의 차이
+
+```text
+JavaScript SDK
+→ 지도 클래스와 함수를 브라우저에 다운로드
+→ kakao.maps.Map, Marker, Polyline 등을 사용할 수 있게 함
+
+REST API
+→ 필요한 순간 서버에 데이터를 요청
+→ 자동차 경로 JSON을 응답으로 받음
+```
+
+
+============================================================
+11. Authorization 헤더의 의미
+============================================================
+
+// ★ Q&A 예상 질문: Authorization: KakaoAK REST키 형식이 필요한 이유는 무엇인가요?
+
+```javascript
+headers: {
+    Authorization: `KakaoAK ${getApiKey()}`
+}
+```
+
+HTTP 요청 헤더에 인증 정보를 추가하는 코드다.
+
+실제로 서버에 전달되는 형태는 다음과 같다.
+
+```text
+Authorization: KakaoAK REST_API_키
+```
+
+KakaoAK와 키 사이에는 공백이 한 칸 필요하다.
+
+서버는 이 값을 이용해 다음 내용을 확인한다.
+
+- 등록된 카카오 애플리케이션인가?
+- 올바른 REST API 키인가?
+- 길찾기 API 사용 권한이 있는가?
+
+인증에 실패하면 보통 401 또는 403 상태가 반환된다.
+
+
+============================================================
+12. Google 지도 설정 파일 순서
+============================================================
+
+메인 페이지 원본 위치: index.html 364번째 줄
+
+```html
+<!-- Google 지도 키를 먼저 등록한다. -->
+<script src="./js/map-config.js"></script>
+
+<!-- 등록된 키로 메인 미니 지도 SDK를 불러온다. -->
+<script src="./js/restaurant_homepageMap.js"></script>
+```
+
+상세 페이지 원본 위치: html/restaurant_detail.html 153번째 줄
+
+```html
+<!-- Google 지도 키를 먼저 등록한다. -->
+<script src="../js/map-config.js"></script>
+
+<!-- 등록된 키로 상세 미니 지도를 불러온다. -->
+<script src="../js/restaurantDetailMap.js"></script>
+```
+
+
+============================================================
+13. 메인 페이지 Google 지도 SDK 불러오기
+============================================================
+
+// ★ Q&A 예상 질문: Google 지도 SDK의 callback 함수를 왜 window에 등록해야 하나요?
+
+원본 위치: js/restaurant_homepageMap.js 348번째 줄
+
+```javascript
+function loadGoogleMaps() {
+    const mapStatus = document.getElementById(
+        'homepage-map-status'
+    );
+    const mapElement = document.getElementById(
+        'homepage-map'
+    );
+
+    // 지도 HTML이 없는 페이지에서는 실행하지 않는다.
+    if (!mapElement || !mapStatus) {
+        return;
+    }
+
+    // 설정 파일에서 Google 지도 키를 읽는다.
+    const apiKey = window.GOOGLE_MAPS_API_KEY?.trim();
+
+    // 일반적인 Google 지도 키 형식인지 확인한다.
+    const hasValidApiKeyFormat =
+        /^AIza[0-9A-Za-z_-]{30,}$/.test(apiKey || '');
+
+    if (!hasValidApiKeyFormat) {
+        mapStatus.textContent =
+            '유효한 Google Maps API 키가 없습니다.';
+        return;
+    }
+
+    // Google SDK가 callback 이름으로 찾을 수 있도록
+    // 초기화 함수를 window에 등록한다.
+    window.initHomepageMap = initHomepageMap;
+
+    // API 인증 자체가 실패하면 Google이 이 함수를 호출한다.
+    window.gm_authFailure = () => {
+        mapStatus.textContent =
+            'Google Maps 인증에 실패했습니다.';
+    };
+
+    const script = document.createElement('script');
+
+    // key에는 인증키를 넣고 callback에는
+    // SDK 로딩 후 실행할 함수 이름을 넣는다.
+    script.src =
+        'https://maps.googleapis.com/maps/api/js' +
+        `?key=${encodeURIComponent(apiKey)}` +
+        '&callback=initHomepageMap' +
+        '&v=weekly' +
+        '&language=ko' +
+        '&region=KR';
+
+    script.async = true;
+    script.defer = true;
+
+    // 파일 자체를 다운로드하지 못한 경우다.
+    script.onerror = () => {
+        mapStatus.textContent =
+            'Google Maps를 불러오지 못했습니다.';
+    };
+
+    // head에 추가하는 순간 SDK 다운로드가 시작된다.
+    document.head.appendChild(script);
+}
+```
+
+
+============================================================
+14. Google 지도 SDK 주소의 옵션
+============================================================
+
+```text
+key
+→ Google 지도 API 인증키
+
+callback=initHomepageMap
+→ SDK 로딩 완료 후 실행할 전역 함수 이름
+
+v=weekly
+→ 주 단위로 제공되는 최신 안정 버전 사용
+
+language=ko
+→ 지도 UI 언어를 한국어로 설정
+
+region=KR
+→ 대한민국 지역 설정 사용
+```
+
+callback에 문자열로 함수 이름을 전달하므로
+함수가 window에 등록되어 있어야 한다.
+
+```javascript
+window.initHomepageMap = initHomepageMap;
+```
+
+등록하지 않으면 Google SDK가 callback 함수를 찾지 못한다.
+
+
+============================================================
+15. async와 defer의 의미
+============================================================
+
+// ★ Q&A 예상 질문: 동적 script 로딩에서 async, defer, callback은 각각 어떤 역할을 하나요?
+
+```javascript
+script.async = true;
+script.defer = true;
+```
+
+async
+
+```text
+외부 SDK를 다운로드하는 동안
+HTML 분석과 다른 화면 작업을 막지 않는다.
+```
+
+defer
+
+```text
+일반적으로 HTML 분석이 끝난 뒤
+스크립트가 실행되도록 미루는 속성이다.
+```
+
+동적으로 만든 script에서는 async의 영향이 더 직접적이며,
+실제 초기화 시점은 onload나 callback으로 제어한다.
+
+
+============================================================
+16. SDK 다운로드 실패와 API 인증 실패의 차이
+============================================================
+
+// ★ Q&A 예상 질문: API가 동작하지 않을 때 네트워크 실패와 인증 실패를 어떻게 구분하나요?
+
+[SDK 다운로드 실패]
+
+```javascript
+script.onerror = () => {
+    showError('지도 스크립트를 불러오지 못했습니다.');
+};
+```
+
+외부 JavaScript 파일 자체를 받지 못한 상황이다.
+
+- 인터넷 연결 실패
+- DNS 또는 방화벽 문제
+- SDK 주소 접근 차단
+
+[API 인증 실패]
+
+```javascript
+window.gm_authFailure = () => {
+    showError('Google Maps 인증에 실패했습니다.');
+};
+```
+
+SDK 파일은 받았지만 키 인증이 거부된 상황이다.
+
+- 잘못된 API 키
+- 허용 도메인 불일치
+- API가 활성화되지 않음
+- 결제 또는 프로젝트 설정 문제
+
+
+============================================================
+17. 핵심 정리
+============================================================
+
+카카오 지도 화면
+
+```text
+설정 파일에서 JavaScript 키 읽기
+→ script 태그 생성
+→ dapi.kakao.com SDK 주소 설정
+→ head에 script 추가
+→ script.onload 실행
+→ kakao.maps.load(initFoodMap)
+→ 실제 지도 생성
+```
+
+카카오 자동차 길찾기
+
+```text
+설정 파일에서 REST 키 읽기
+→ 출발지·도착지 query 생성
+→ fetch()로 카카오모빌리티 서버 호출
+→ Authorization 헤더로 인증
+→ response.ok 확인
+→ response.json()으로 경로 데이터 읽기
+```
+
+Google 미니 지도
+
+```text
+설정 파일에서 Google 키 읽기
+→ callback 함수를 window에 등록
+→ Google SDK script 태그 생성
+→ head에 script 추가
+→ callback 실행
+→ 실제 지도 생성
+```

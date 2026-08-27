@@ -1,0 +1,131 @@
+[지도와 GeoJSON Q&A]
+
+Q1. 맛집 탐색 페이지에서는 어떤 지도 API를 사용했나요?
+
+A. 카카오 지도 JavaScript SDK를 사용했습니다.
+`js/restaurantMap.js`에서 `kakao.maps.Map`으로 지도를 만들고,
+`kakao.maps.Marker`, `Polygon`, `Polyline`을 사용합니다.
+
+
+Q2. 메인 페이지와 상세 페이지도 카카오 지도인가요?
+
+A. 아닙니다. 맛집 탐색 페이지는 카카오 지도이고,
+메인 페이지와 음식점 상세 페이지의 미니 지도는 Google 지도입니다.
+프로젝트 안에 두 지도 API가 함께 사용됩니다.
+
+
+Q3. 지도는 실제로 어디에서 생성되나요?
+
+A. `js/restaurantMap.js` 231번째 줄 부근입니다.
+
+```javascript
+map = new kakao.maps.Map(mapElement, {
+    center: new kakao.maps.LatLng(37.8813, 127.7298),
+    level: 7
+});
+```
+
+`mapElement`는 HTML의 `id="map-api"` 요소입니다.
+중심 좌표는 춘천시 중심 부근이고 `level`은 확대 수준입니다.
+
+
+Q4. GeoJSON은 무엇인가요?
+
+A. 지도상의 점, 선, 면과 속성 정보를 JSON 형식으로 저장하는 규격입니다.
+이 프로젝트에서는 춘천시 외곽선과 행정동별 면 경계를 저장합니다.
+
+
+Q5. 어떤 GeoJSON 파일을 사용하나요?
+
+A. 다음 두 파일을 사용합니다.
+
+- `data/area/chuncheon-admin-dong.geojson`
+  행정동별 Polygon 또는 MultiPolygon 데이터
+
+- `data/area/chuncheon-city-boundary.geojson`
+  춘천시 전체 MultiLineString 외곽선 데이터
+
+
+Q6. 두 GeoJSON 파일은 어떻게 불러오나요?
+
+A. `fetch()`와 `Promise.all()`을 사용해 동시에 불러옵니다.
+원본은 `js/restaurantMap.js` 164번째 줄 부근입니다.
+
+```javascript
+const responses = await Promise.all([
+    fetch(DISTRICT_URL),
+    fetch(CITY_URL)
+]);
+```
+
+두 파일은 서로 독립적이므로 동시에 요청해 대기 시간을 줄였습니다.
+
+
+Q7. 왜 `response.json()`을 사용하나요?
+
+A. fetch 응답 본문은 바로 JavaScript 객체가 아니기 때문입니다.
+GeoJSON 문자열을 실제 객체로 변환해야 `features`, `geometry`,
+`coordinates` 같은 속성에 접근할 수 있습니다.
+
+
+Q8. GeoJSON 좌표를 그대로 카카오 지도에 넣을 수 있나요?
+
+A. 그대로 넣으면 안 됩니다. GeoJSON은 `[경도, 위도]` 순서이고,
+카카오 `LatLng`는 `(위도, 경도)` 순서이므로 뒤집어야 합니다.
+
+```javascript
+const latLng = coordinate =>
+    new kakao.maps.LatLng(coordinate[1], coordinate[0]);
+```
+
+
+Q9. Polygon과 MultiPolygon의 차이는 무엇인가요?
+
+A. Polygon은 하나의 면 영역이고 MultiPolygon은 여러 면 영역의 묶음입니다.
+행정동이 여러 조각으로 나뉘어 있을 수 있어 MultiPolygon을 지원합니다.
+
+
+Q10. 행정동 이름은 어디에서 가져오나요?
+
+A. GeoJSON Feature의 `properties.ADM_NM`에서 읽습니다.
+
+```javascript
+feature.properties?.ADM_NM
+```
+
+이 값을 사용자가 선택한 행정동 이름과 비교합니다.
+
+
+Q11. 춘천시 외곽선과 행정동 면은 어떻게 구분하나요?
+
+A. `feature.geometry.type`을 확인합니다.
+`MultiLineString`이면 Polyline으로 외곽선을 그리고,
+Polygon 또는 MultiPolygon이면 Polygon으로 면을 그립니다.
+
+
+Q12. 기존 경계를 먼저 지우는 이유는 무엇인가요?
+
+A. 사용자가 다른 행정동을 선택할 때 이전 경계가 남아 겹치는 것을
+방지하기 위해서입니다. `overlay.setMap(null)`로 지도에서 제거한 뒤
+새로운 선택 상태에 맞춰 다시 그립니다.
+
+
+Q13. 선택 지역이 화면에 모두 보이게 하는 방법은 무엇인가요?
+
+A. 선택 지역의 모든 좌표를 `kakao.maps.LatLngBounds`에 추가하고
+`map.setBounds()`를 호출합니다. 그러면 지도 중심과 확대 수준이
+선택 지역 전체를 포함하도록 자동 조정됩니다.
+
+
+Q14. 여러 행정동을 선택했을 때 내부 경계선은 어떻게 처리하나요?
+
+A. 각 Polygon의 선분을 Map에 저장하고 같은 선분이 두 번 나오면
+서로 맞닿은 내부 선으로 판단합니다. 한 번만 나온 선분만 그려서
+선택 지역 묶음의 바깥 윤곽을 강조합니다.
+
+
+Q15. GeoJSON을 사용한 이유는 무엇인가요?
+
+A. 단순한 행정동 이름 목록만으로는 실제 지도 영역을 그릴 수 없습니다.
+GeoJSON에는 경계 좌표가 들어 있어 지역 선택 결과를 면과 선으로
+시각화하고, 선택 영역에 맞게 지도 범위를 이동할 수 있습니다.
