@@ -1,0 +1,1 @@
+Slide 1: shortened the subtitle and five node labels to improve scanability while preserving the original visual structure.

@@ -181,7 +181,7 @@ def flow(story, items):
 def build_guide():
     path = OUT / "지도_API_코드_설명서.pdf"
     story = []
-    cover(story, "지도 · API 코드 설명서", "구조, 작동 순서, 핵심 코드만 간결하게", "TECHNICAL GUIDE")
+    cover(story, "지도 · API 코드 설명서", "TXT 설명을 반영한 상세판 - 구조, 문법, 실행 흐름", "DETAILED TECHNICAL GUIDE")
 
     h1(story, "1. 한눈에 보는 파일 역할")
     data = [
@@ -208,6 +208,7 @@ def build_guide():
     story.append(table)
     callout(story, "핵심 구분", "맛집 탐색 화면은 카카오 지도, 메인·상세 미니 지도는 Google 지도를 사용한다.")
 
+    story.append(PageBreak())
     h1(story, "2. 카카오 지도와 GeoJSON")
     p(story, "춘천시 외곽선과 행정동 면 영역은 GeoJSON 파일에서 읽는다. 지도 화면은 카카오 JavaScript SDK가 담당한다.")
     flow(story, ["GeoJSON 요청", "JSON 객체 변환", "좌표 순서 변환", "Polygon·Polyline 생성"])
@@ -226,6 +227,15 @@ if (responses.some(response => !response.ok)) {
 );""")
     h2(story, "왜 response.ok를 확인하나?")
     p(story, "fetch는 404나 500 응답에서도 Promise 자체가 완료될 수 있다. 따라서 HTTP 요청이 성공 범위(200~299)인지 직접 확인한다.")
+    h2(story, "response => !response.ok를 풀어 쓰면")
+    code(story, """// 화살표 함수
+response => !response.ok
+
+// 같은 뜻의 일반 함수
+function (response) {
+    return !response.ok;
+}""")
+    p(story, "responses.some(...)은 배열의 응답을 하나씩 검사한다. response.ok가 false인 응답을 찾으면 !false가 true가 되고, some()은 즉시 true를 반환한다. 즉 ‘두 파일 중 하나라도 실패했는가?’를 검사하는 코드다.")
     h2(story, "좌표 순서를 왜 바꾸나?")
     code(story, """// GeoJSON: [경도, 위도]
 // Kakao LatLng: (위도, 경도)
@@ -233,6 +243,22 @@ const latLng = coordinate =>
     new kakao.maps.LatLng(coordinate[1], coordinate[0]);""")
     callout(story, "★ 예상 질문", "GeoJSON을 사용한 이유는? 행정동 이름뿐 아니라 실제 면 경계 좌표가 필요했기 때문이다.", PALE_GOLD, GOLD)
 
+    h2(story, "Polygon과 MultiPolygon 처리")
+    source(story, "js/restaurantMap.js", "46줄")
+    code(story, """const polygonsOf = geometry =>
+    geometry.type === 'Polygon'
+        ? [geometry.coordinates]
+        : geometry.coordinates;""")
+    p(story, "Polygon과 MultiPolygon은 좌표 배열의 중첩 깊이가 다르다. Polygon도 배열로 한 번 감싸면 이후 반복문이 두 형식을 같은 방식으로 처리할 수 있다.")
+    h2(story, "경계 도형을 다시 그리는 이유")
+    p(story, "사용자가 행정동 선택을 바꾸면 과거 Polygon과 Polyline을 먼저 setMap(null)로 제거한다. 제거하지 않으면 이전 경계와 새 경계가 겹치고, 선택 상태와 화면이 달라진다.")
+    code(story, """const clearOverlays = overlays => {
+    overlays.forEach(overlay => overlay.setMap(null));
+    overlays.length = 0;
+};""")
+    callout(story, "실행 결과", "‘전체’ 선택 시 춘천시 외곽선을, 특정 동 선택 시 행정동 면을 강조하고 LatLngBounds로 선택 영역 전체가 보이게 한다.", PALE_GREEN, GREEN)
+
+    story.append(PageBreak())
     h1(story, "3. 음식점 마커와 필터")
     source(story, "js/restaurantMap.js", "203~228줄")
     p(story, "새 데이터를 그리기 전에 기존 마커를 지도에서 제거하고 배열도 비운다. 그렇지 않으면 실행할 때마다 같은 마커와 클릭 이벤트가 겹친다.")
@@ -241,6 +267,19 @@ const latLng = coordinate =>
 );
 restaurantMarkers = [];""")
     callout(story, "정확한 의미", "카카오 지도 전체를 초기화하는 것이 아니라 음식점 마커만 정리한 뒤 최신 데이터로 다시 만든다.", PALE_GREEN, GREEN)
+    h2(story, "같은 좌표의 음식점 묶기")
+    p(story, "동일 건물에 음식점이 여러 개 있으면 마커가 완전히 겹친다. 위도와 경도를 소수점 8자리 문자열로 만든 뒤 Map의 key로 사용해 같은 위치를 한 그룹으로 묶는다.")
+    code(story, """const groups = new Map();
+
+restaurants.forEach(restaurant => {
+    const key =
+        `${restaurant.latitude.toFixed(8)},` +
+        `${restaurant.longitude.toFixed(8)}`;
+    const group = groups.get(key) || [];
+    group.push(restaurant);
+    groups.set(key, group);
+});""")
+    p(story, "마커는 그룹마다 하나만 생성하고, 클릭 시 같은 위치의 음식점 목록을 정보창에서 보여준다. toFixed(8)은 작은 부동소수점 차이 때문에 같은 위치가 다른 그룹이 되는 문제를 줄인다.")
     h2(story, "필터 조건")
     code(story, """const matchesFilter = restaurant =>
     (selectedDistricts.has(ALL) ||
@@ -250,6 +289,17 @@ restaurantMarkers = [];""")
     (favoriteRestaurantKeys === null ||
         favoriteRestaurantKeys.has(getRestaurantKey(restaurant)));""")
     p(story, "지역·카테고리·즐겨찾기 조건을 모두 통과한 음식점만 표시한다. `marker.setMap(map)`은 표시, `marker.setMap(null)`은 숨김이다.")
+    h2(story, "즐겨찾기 데이터 연결")
+    source(story, "js/restaurantExplorer.js", "16~38줄")
+    p(story, "즐겨찾기 저장 ID는 ‘행정동_카테고리_순번’이지만 지도 CSV는 그 순번을 직접 알지 못한다. 따라서 즐겨찾기 항목을 ‘행정동|음식점명’ 형태로 변환해 지도 데이터와 비교한다.")
+    code(story, """function syncFavoriteMarkers() {
+    window.RestaurantMap?.selectFavorites(
+        favoritesOnly
+            ? getFavoriteRestaurantKeys()
+            : null
+    );
+}""")
+    p(story, "favoritesOnly가 true면 즐겨찾기 키 배열을 전달하고, false면 null을 전달해 필터를 해제한다. ?.는 RestaurantMap이 아직 준비되지 않은 경우 호출 오류를 막는다.")
     callout(story, "★ 예상 질문", "같은 좌표의 음식점은 왜 묶나? 같은 건물의 마커가 겹치는 문제를 막고 하나의 정보창에서 여러 음식점을 보여주기 위해서다.", PALE_GOLD, GOLD)
 
     h1(story, "4. GPS와 주변 맛집")
@@ -263,8 +313,36 @@ restaurantMarkers = [];""")
     }),
     error => reject(new Error(getErrorMessage(error)))
 );""")
+    h2(story, "GPS 옵션과 오류 처리")
+    data = [
+        ["옵션", "의미", "고려할 점"],
+        ["enableHighAccuracy", "가능하면 높은 정확도 요청", "응답·배터리 비용 증가 가능"],
+        ["timeout: 10000", "최대 10초 대기", "초과 시 오류 코드 3"],
+        ["maximumAge: 0", "캐시 위치 사용 안 함", "새 위치를 요청"],
+    ]
+    gps_table = Table([[Paragraph(str(c), SMALL) for c in row] for row in data], colWidths=[43 * mm, 61 * mm, 62 * mm])
+    gps_table.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, 0), NAVY), ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+        ("GRID", (0, 0), (-1, -1), 0.5, LINE), ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("TOPPADDING", (0, 0), (-1, -1), 6), ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+    ]))
+    story += [gps_table, Spacer(1, 8)]
+    p(story, "오류 코드 1은 권한 거부, 2는 위치 확인 불가, 3은 시간 초과다. 숫자 코드를 사용자에게 이해되는 문장으로 변환한다. 페이지를 나갈 때 clearWatch로 위치 추적을 중지해 불필요한 조회를 막는다.")
     h2(story, "하버사인 공식이 필요한 이유")
     p(story, "위도·경도는 평면 좌표가 아니므로 단순 차이만으로 km 거리를 구할 수 없다. 하버사인은 지구 곡면을 고려하고, 음식점마다 길찾기 API를 호출하지 않아 주변 후보를 빠르게 찾는다.")
+    source(story, "js/nearbyRestaurantService.js", "30~50줄")
+    code(story, """const haversine =
+    Math.sin(latitudeDifference / 2) ** 2 +
+    Math.cos(startLatitude) *
+    Math.cos(endLatitude) *
+    Math.sin(longitudeDifference / 2) ** 2;
+
+return EARTH_RADIUS_KM * 2 * Math.atan2(
+    Math.sqrt(haversine),
+    Math.sqrt(1 - haversine)
+);""")
+    h2(story, "반경 필터와 정렬")
+    p(story, "각 음식점까지 distanceKm를 계산한 뒤 radiusKm보다 먼 항목은 제외한다. sortBy가 distance이면 가까운 순, rating이면 평점·리뷰 수를 우선하고 동률일 때 거리순으로 정렬한다. 좌표가 잘못된 음식점은 개별 try/catch로 제외해 전체 검색이 중단되지 않게 한다.")
     callout(story, "실제 화면", "메인 홈페이지의 ‘내 주변 맛집’ 탭에서 250m·500m·1km·직접 설정 반경과 음식점 거리를 표시한다.", PALE_GREEN, GREEN)
     callout(story, "주의", "하버사인 결과는 직선거리다. 실제 자동차 도로 거리는 카카오 길찾기 API 결과를 사용한다.")
 
@@ -285,6 +363,25 @@ if (!response.ok) {
 }
 
 const data = await response.json();""")
+    h2(story, "요청 query의 의미")
+    data = [
+        ["항목", "값", "설명"],
+        ["origin", "경도,위도", "자동차 출발 위치"],
+        ["destination", "경도,위도", "자동차 도착 위치"],
+        ["priority", "RECOMMEND", "추천 경로 요청"],
+        ["alternatives", "false", "대안 경로 생략"],
+        ["road_details", "false", "상세 도로 정보 생략"],
+    ]
+    query_table = Table([[Paragraph(str(c), SMALL) for c in row] for row in data], colWidths=[39 * mm, 45 * mm, 82 * mm])
+    query_table.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, 0), NAVY), ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+        ("GRID", (0, 0), (-1, -1), 0.5, LINE), ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("TOPPADDING", (0, 0), (-1, -1), 6), ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+    ]))
+    story += [query_table, Spacer(1, 8)]
+    p(story, "지도 LatLng는 위도,경도 순서지만 REST API query는 경도,위도 순서다. 두 규격을 혼동하면 다른 위치의 경로가 검색되므로 요청 단계와 표시 단계를 구분해야 한다.")
+    h2(story, "두 단계의 오류 검사")
+    p(story, "첫째 response.ok로 HTTP 통신 성공을 확인한다. 401·403은 인증 또는 권한 문제로 따로 안내한다. 둘째 route.result_code로 실제 자동차 경로 계산 성공을 확인한다. HTTP가 200이어도 경로가 없을 수 있기 때문이다.")
     h2(story, "경로 좌표 구조")
     p(story, "응답 구조는 routes → sections → roads → vertexes다. vertexes는 [경도, 위도, 경도, 위도, ...] 형태라 두 칸씩 읽는다.")
     source(story, "js/directionsController.js", "146~164줄")
@@ -301,6 +398,20 @@ routePolyline = new kakao.maps.Polyline({
     strokeColor: '#eb1111'
 });""")
     callout(story, "★ 예상 질문", "JavaScript SDK와 REST API의 차이는? SDK는 지도 요소를 브라우저에 그리며, REST API는 서버가 계산한 자동차 경로 JSON을 반환한다.", PALE_GOLD, GOLD)
+    h2(story, "화면 제어와 중복 요청 방지")
+    p(story, "길찾기 버튼을 누르면 출발지·도착지 존재 여부를 먼저 검사한다. 요청 중에는 버튼을 disabled 상태로 만들고, try에서 요청·표시, catch에서 오류 안내, finally에서 버튼 복구를 수행한다.")
+    code(story, """try {
+    const route = await DirectionsService.findDrivingRoute(
+        routeLocations.origin,
+        routeLocations.destination
+    );
+    drawRoute(route);
+} catch (error) {
+    clearRoute();
+    showRouteResult(error.message, true);
+} finally {
+    routeSubmitButton.disabled = false;
+}""")
 
     h1(story, "6. 지도 API를 불러오는 순서")
     h2(story, "카카오 지도 SDK")
@@ -315,6 +426,15 @@ script.async = true;
 script.onload = () => kakao.maps.load(initFoodMap);
 document.head.appendChild(script);""")
     p(story, "createElement만으로는 다운로드가 시작되지 않는다. appendChild로 실제 HTML head에 넣는 순간 브라우저가 SDK를 요청한다.")
+    h2(story, "onload, onerror, autoload=false")
+    p(story, "script.onload는 SDK 파일 다운로드 성공 후 실행되고, script.onerror는 네트워크 문제 등으로 파일 자체를 받지 못했을 때 실행된다. autoload=false를 사용했으므로 onload 이후 kakao.maps.load(initFoodMap)을 직접 호출해 SDK 내부 준비가 끝난 뒤 지도를 생성한다.")
+    h2(story, "설정 파일이 먼저 실행되어야 하는 이유")
+    code(story, """<!-- 키를 먼저 window에 등록 -->
+<script src="../js/map-config-KakaoJS.js"></script>
+
+<!-- 그 다음 키를 읽는 지도 코드 실행 -->
+<script src="../js/restaurantMap.js"></script>""")
+    p(story, "HTML의 일반 script 태그는 위에서 아래로 실행된다. 순서를 바꾸면 restaurantMap.js가 실행될 때 window.KAKAO_JS_MAPS_API_KEY가 없어 지도가 비활성화될 수 있다.")
     h2(story, "Google 미니 지도 SDK")
     p(story, "Google 지도는 URL의 callback 이름을 SDK 로딩 완료 후 호출한다. 따라서 초기화 함수를 window에 등록해야 한다.")
     code(story, """window.initHomepageMap = initHomepageMap;
@@ -324,10 +444,16 @@ script.src =
     '&callback=initHomepageMap' +
     '&language=ko&region=KR';""")
 
+    story.append(PageBreak())
     h1(story, "7. API 키 보안과 구조 개선")
     callout(story, "중요", "브라우저 JavaScript에 들어간 키는 완전히 숨길 수 없다. 지도 JavaScript 키에는 허용 도메인과 API 제한을 반드시 설정한다.", PALE_GOLD, GOLD)
     p(story, "카카오 REST 키는 프런트엔드 코드와 네트워크 요청에서 노출될 수 있다. 실제 배포에서는 백엔드가 키를 환경 변수로 보관하고 카카오 API를 대신 호출하는 구조가 더 안전하다.")
     p(story, "이미 공개 저장소에 올라간 키는 파일에서 지우는 것만으로 부족하다. 키를 폐기·재발급하고 Git 기록 노출 여부도 확인한다.")
+    h2(story, "권장 구조")
+    flow(story, ["브라우저", "자체 백엔드", "카카오 API", "필요 결과만 반환"])
+    p(story, "브라우저는 자체 백엔드에 출발지·도착지만 보낸다. 백엔드는 환경 변수에 저장한 REST 키로 카카오 API를 호출한다. 이렇게 하면 REST 키가 브라우저 코드와 개발자 도구에 직접 노출되지 않는다.")
+    h2(story, "추가 개선 항목")
+    p(story, "음식점 이름 대신 고유 ID 사용, 지도 제공자 통일, 마커 클러스터링, 화면 범위 기반 로딩, 요청 취소(AbortController), 오류 재시도 UI와 자동화 테스트를 적용할 수 있다.")
 
     story.append(PageBreak())
     h1(story, "8. 전체 작동 흐름")
@@ -376,7 +502,7 @@ def qa(story, number, question, answer, star=False):
 def build_qna():
     path = OUT / "지도_API_핵심_QnA.pdf"
     story = []
-    cover(story, "지도 · API 핵심 Q&A", "발표와 코드 리뷰에서 자주 나올 질문 40선", "PRESENTATION Q&A")
+    cover(story, "지도 · API 상세 Q&A", "핵심 질문 40개와 이어지는 꼬리 질문", "DETAILED PRESENTATION Q&A")
 
     sections = [
         ("1. 지도와 GeoJSON", [
@@ -446,9 +572,62 @@ def build_qna():
         if idx in (1, 3, 5):
             story.append(PageBreak())
 
+    story.append(PageBreak())
+    h1(story, "8. 꼬리 질문 - 조금 더 자세한 답변")
+    callout(story, "답변 방법", "기능 설명 → 선택 이유 → 실제 화면 활용 순서로 답하면 짧지만 설득력 있게 설명할 수 있다.", PALE_GREEN, GREEN)
+    detailed = [
+        ("왜 카카오 지도와 Google 지도를 함께 사용했나요?",
+         "현재 프로젝트 구조에서는 맛집 탐색 화면이 카카오 지도 기능을 중심으로 구현됐고, 메인·상세 미니 지도는 기존 Google 지도 모듈을 유지했습니다. 기능상 동작하지만 키 관리와 유지보수가 두 갈래가 되므로 장기적으로 한 제공자로 통일하는 것이 개선점입니다."),
+        ("왜 음식점 마커를 필터마다 새로 만들지 않고 숨기나요?",
+         "지역·카테고리 변경은 표시 조건만 달라지는 작업입니다. 기존 Marker 객체를 유지한 채 setMap(map/null)로 연결 상태만 바꾸면 마커 생성과 이벤트 재등록 비용을 줄일 수 있습니다. 데이터 자체를 다시 불러올 때만 전체 마커를 초기화하고 재생성합니다."),
+        ("하버사인 대신 모든 음식점에 길찾기 API를 호출하면 안 되나요?",
+         "가능하지만 음식점 수만큼 네트워크 요청이 필요해 느리고 API 할당량도 많이 사용합니다. 하버사인으로 직선거리 후보를 브라우저에서 빠르게 거른 뒤, 사용자가 선택한 한 경로에만 길찾기 API를 사용하는 것이 효율적입니다."),
+        ("GPS 정확도 값은 어디에 활용하나요?",
+         "position.coords.accuracy를 미터 단위로 받아 현재 위치 상태 문구에 표시합니다. 사용자는 위치 결과가 어느 정도 정확한지 판단할 수 있습니다. 정확도가 낮더라도 주변 검색은 가능하지만 반경이 작을수록 결과 오차가 커질 수 있습니다."),
+        ("HTTP 성공과 경로 계산 성공을 왜 따로 검사하나요?",
+         "response.ok는 서버 통신이 HTTP 수준에서 성공했는지 확인합니다. 하지만 HTTP 200이어도 자동차로 갈 수 없는 좌표처럼 경로 계산 결과가 실패할 수 있으므로 route.result_code도 별도로 검사해야 합니다."),
+        ("script.onerror와 API 인증 오류의 차이는 무엇인가요?",
+         "script.onerror는 SDK JavaScript 파일 자체를 다운로드하지 못한 경우입니다. 인증 오류는 SDK는 로드됐지만 키, 도메인, API 활성화 설정이 거부된 경우입니다. 문제 원인이 다르므로 사용자 메시지도 구분합니다."),
+        ("즐겨찾기를 음식점 이름으로 연결할 때 문제는 없나요?",
+         "같은 행정동에 같은 이름의 음식점이 있거나 이름이 변경되면 잘못 연결될 수 있습니다. 현재 구조를 연결하기 위한 실용적인 방식이지만, 데이터에 변하지 않는 고유 restaurantId를 추가하는 것이 더 안전합니다."),
+        ("GeoJSON 내부 경계선을 제거하는 원리는 무엇인가요?",
+         "여러 행정동 Polygon의 선분을 시작·끝 좌표 조합으로 저장합니다. 같은 선분이 두 번 나오면 두 동이 맞닿은 내부 경계이고, 한 번만 나온 선분은 선택 영역의 바깥 윤곽이므로 그것만 강조합니다."),
+        ("API 키 정규식 검사가 보안을 보장하나요?",
+         "아닙니다. 정규식은 빈 값이나 형식이 명백히 잘못된 키를 미리 찾는 입력 검증일 뿐입니다. 실제 보안은 허용 도메인·API 제한, 키 재발급, REST 요청의 백엔드 이전으로 확보해야 합니다."),
+        ("프로젝트에서 가장 먼저 개선할 한 가지는 무엇인가요?",
+         "카카오모빌리티 REST API 호출을 백엔드로 이동하는 것입니다. 현재 브라우저가 REST 키를 직접 사용하면 개발자 도구에서 확인할 수 있으므로, 서버가 환경 변수로 키를 보관하고 필요한 경로 결과만 반환하도록 바꾸는 것이 우선입니다."),
+    ]
+    for i, (question, answer) in enumerate(detailed, start=number):
+        if i == 50:
+            story.append(PageBreak())
+        qa(story, i, question, answer, True)
+
     h1(story, "마지막 30초 요약")
     p(story, "카카오 지도는 restaurantMap.js가 담당하며, GeoJSON으로 행정동 경계를 그리고 CSV 음식점을 마커로 표시한다. GPS와 하버사인 공식으로 주변 맛집을 빠르게 찾고, 선택한 출발지·도착지는 카카오모빌리티 REST API로 실제 자동차 경로를 계산한다. 메인·상세 미니 지도는 Google 지도를 사용한다.")
     callout(story, "발표 팁", "기술 이름만 말하기보다 ‘왜 선택했는지’와 ‘어디 화면에서 쓰이는지’를 함께 답하면 이해하기 쉽다.", PALE_GREEN, GREEN)
+    h2(story, "상황별 답변 틀")
+    templates = [
+        ["질문 유형", "답변 순서"],
+        ["이 코드는 무엇인가?", "문법 뜻 → 입력값 → 반환값 → 호출 위치"],
+        ["왜 이 방식을 썼나?", "해결할 문제 → 선택 이유 → 다른 방식과 차이"],
+        ["화면 어디에 쓰이나?", "사용자 동작 → 실행 함수 → 화면 결과"],
+        ["오류가 나면?", "검사 조건 → 사용자 메시지 → 복구 또는 개선 방법"],
+    ]
+    template_table = Table(
+        [[Paragraph(str(c), SMALL) for c in row] for row in templates],
+        colWidths=[52 * mm, 114 * mm],
+    )
+    template_table.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, 0), NAVY),
+        ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+        ("GRID", (0, 0), (-1, -1), 0.5, LINE),
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, colors.HexColor("#F8FAFC")]),
+        ("TOPPADDING", (0, 0), (-1, -1), 6),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+    ]))
+    story += [template_table, Spacer(1, 9)]
+    callout(story, "헷갈리기 쉬운 세 가지", "GeoJSON·REST query의 좌표는 경도,위도지만 kakao.maps.LatLng는 위도,경도다. 하버사인은 직선거리이며 길찾기는 도로 거리다. setMap(null)은 객체 삭제가 아니라 지도에서 숨기는 동작이다.", PALE_GOLD, GOLD)
 
     document(path, "지도 API 핵심 Q&A").build(story)
     return path

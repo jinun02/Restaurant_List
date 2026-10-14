@@ -1,0 +1,3 @@
+[Sources]
+- Repository README.md for implemented page and feature names.
+- Source deck 봄내로그_프로젝트_흐름도_가로형.pptx for all visual styling and hierarchy.

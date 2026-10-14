@@ -1,0 +1,2241 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/3dqk2k",
+    "id": "3dqk2k",
+    "slide": 1,
+    "layoutId": "cf201a68-8887-427e-a368-f80b5a0f1f62",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "ef18808d-6016-4620-bd60-200f211da37e",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#F7FAF4",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "+mn-lt"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "cf201a68-8887-427e-a368-f80b5a0f1f62",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "ef18808d-6016-4620-bd60-200f211da37e",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "ef18808d-6016-4620-bd60-200f211da37e",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/e9sjut8f",
+      "id": "1",
+      "name": "green-frame",
+      "bbox": [
+        26,
+        24,
+        1228,
+        672
+      ],
+      "geometry": "rect",
+      "lineColor": "#86C94A",
+      "lineWidth": 16
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/1cj2p8r6",
+      "id": "2",
+      "name": "title",
+      "bbox": [
+        72,
+        47,
+        1136,
+        48
+      ],
+      "geometry": "rect",
+      "text": "맛집을 발견하고 기록하기까지",
+      "textPreview": "맛집을 발견하고 기록하기까지",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 32,
+        "typeface": "+mn-lt",
+        "color": "#17351B",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "맛집을 발견하고 기록하기까지"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "맛집을 발견하고 기록하기까지",
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "color": "#17351B",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "맛집을 발견하고 기록하기까지",
+              "fontSize": 32,
+              "color": "#17351B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0ba1w3ql",
+      "id": "3",
+      "name": "subtitle",
+      "bbox": [
+        400,
+        96,
+        480,
+        26
+      ],
+      "geometry": "rect",
+      "text": "봄내로그의 핵심 사용자 여정",
+      "textPreview": "봄내로그의 핵심 사용자 여정",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "color": "#5F7762",
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "봄내로그의 핵심 사용자 여정"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "봄내로그의 핵심 사용자 여정",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "color": "#5F7762",
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "봄내로그의 핵심 사용자 여정",
+              "fontSize": 16,
+              "color": "#5F7762",
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/nylkri9c",
+      "id": "4",
+      "name": "stage-1",
+      "bbox": [
+        70,
+        198,
+        200,
+        222
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#9BCB72",
+      "lineWidth": 2
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/2dcjyd8r",
+      "id": "5",
+      "name": "badge-1",
+      "bbox": [
+        144,
+        176,
+        52,
+        52
+      ],
+      "geometry": "ellipse",
+      "text": "01",
+      "textPreview": "01",
+      "resolvedFontSize": 15,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 15,
+        "typeface": "+mn-lt",
+        "color": "#FFFFFF",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "01"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "01",
+          "resolvedTextStyle": {
+            "fontSize": 15,
+            "color": "#FFFFFF",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "01",
+              "fontSize": 15,
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "#7DBC45",
+      "lineColor": "#F7FAF4",
+      "lineWidth": 4
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/p032t8r2",
+      "id": "6",
+      "name": "stage-title-1",
+      "bbox": [
+        88,
+        238,
+        164,
+        34
+      ],
+      "geometry": "rect",
+      "text": "발견",
+      "textPreview": "발견",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "color": "#17351B",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "발견"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "발견",
+          "resolvedTextStyle": {
+            "fontSize": 19,
+            "color": "#17351B",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "발견",
+              "fontSize": 19,
+              "color": "#17351B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ozu103qx",
+      "id": "7",
+      "name": "stage-page-1",
+      "bbox": [
+        88,
+        282,
+        164,
+        34
+      ],
+      "geometry": "rect",
+      "text": "메인 화면",
+      "textPreview": "메인 화면",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "color": "#57922F",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "메인 화면"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "메인 화면",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "color": "#57922F",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "메인 화면",
+              "fontSize": 16,
+              "color": "#57922F",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/b2lkvi98",
+      "id": "8",
+      "name": "stage-detail-1",
+      "bbox": [
+        90,
+        325,
+        160,
+        70
+      ],
+      "geometry": "rect",
+      "text": "추천 맛집\n지역·소식 확인",
+      "textPreview": "추천 맛집 | 지역·소식 확인",
+      "resolvedFontSize": 15,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 15,
+        "typeface": "+mn-lt",
+        "color": "#516255",
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "추천 맛집"
+          },
+          {
+            "index": 2,
+            "text": "지역·소식 확인"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "추천 맛집",
+          "resolvedTextStyle": {
+            "fontSize": 15,
+            "color": "#516255",
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "추천 맛집",
+              "fontSize": 15,
+              "color": "#516255",
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "지역·소식 확인",
+          "resolvedTextStyle": {
+            "fontSize": 15,
+            "color": "#516255",
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "지역·소식 확인",
+              "fontSize": 15,
+              "color": "#516255",
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/a1cj2d8n",
+      "id": "9",
+      "name": "stage-2",
+      "bbox": [
+        305,
+        198,
+        200,
+        222
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#9BCB72",
+      "lineWidth": 2
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/w3u5gve9",
+      "id": "10",
+      "name": "badge-2",
+      "bbox": [
+        379,
+        176,
+        52,
+        52
+      ],
+      "geometry": "ellipse",
+      "text": "02",
+      "textPreview": "02",
+      "resolvedFontSize": 15,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 15,
+        "typeface": "+mn-lt",
+        "color": "#FFFFFF",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "02"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "02",
+          "resolvedTextStyle": {
+            "fontSize": 15,
+            "color": "#FFFFFF",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "02",
+              "fontSize": 15,
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "#7DBC45",
+      "lineColor": "#F7FAF4",
+      "lineWidth": 4
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/h43mp0fu",
+      "id": "11",
+      "name": "stage-title-2",
+      "bbox": [
+        323,
+        238,
+        164,
+        34
+      ],
+      "geometry": "rect",
+      "text": "검색과 필터",
+      "textPreview": "검색과 필터",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "color": "#17351B",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "검색과 필터"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "검색과 필터",
+          "resolvedTextStyle": {
+            "fontSize": 19,
+            "color": "#17351B",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "검색과 필터",
+              "fontSize": 19,
+              "color": "#17351B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ahcnelwj",
+      "id": "12",
+      "name": "stage-page-2",
+      "bbox": [
+        323,
+        282,
+        164,
+        34
+      ],
+      "geometry": "rect",
+      "text": "통합 검색",
+      "textPreview": "통합 검색",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "color": "#57922F",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "통합 검색"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "통합 검색",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "color": "#57922F",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "통합 검색",
+              "fontSize": 16,
+              "color": "#57922F",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vil4nqxo",
+      "id": "13",
+      "name": "stage-detail-2",
+      "bbox": [
+        325,
+        325,
+        160,
+        70
+      ],
+      "geometry": "rect",
+      "text": "동네 선택\n업종별 필터",
+      "textPreview": "동네 선택 | 업종별 필터",
+      "resolvedFontSize": 15,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 15,
+        "typeface": "+mn-lt",
+        "color": "#516255",
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "동네 선택"
+          },
+          {
+            "index": 2,
+            "text": "업종별 필터"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "동네 선택",
+          "resolvedTextStyle": {
+            "fontSize": 15,
+            "color": "#516255",
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "동네 선택",
+              "fontSize": 15,
+              "color": "#516255",
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "업종별 필터",
+          "resolvedTextStyle": {
+            "fontSize": 15,
+            "color": "#516255",
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "업종별 필터",
+              "fontSize": 15,
+              "color": "#516255",
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/47e5kfel",
+      "id": "14",
+      "name": "stage-3",
+      "bbox": [
+        540,
+        198,
+        200,
+        222
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#E9F8D8",
+      "lineColor": "#9BCB72",
+      "lineWidth": 2
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/58nmtkf6",
+      "id": "15",
+      "name": "badge-3",
+      "bbox": [
+        614,
+        176,
+        52,
+        52
+      ],
+      "geometry": "ellipse",
+      "text": "03",
+      "textPreview": "03",
+      "resolvedFontSize": 15,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 15,
+        "typeface": "+mn-lt",
+        "color": "#FFFFFF",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "03"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "03",
+          "resolvedTextStyle": {
+            "fontSize": 15,
+            "color": "#FFFFFF",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "03",
+              "fontSize": 15,
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "#7DBC45",
+      "lineColor": "#F7FAF4",
+      "lineWidth": 4
+    },
+    {
+      "order": 16,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/i5cni5wf",
+      "id": "16",
+      "name": "stage-title-3",
+      "bbox": [
+        558,
+        238,
+        164,
+        34
+      ],
+      "geometry": "rect",
+      "text": "탐색",
+      "textPreview": "탐색",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "color": "#17351B",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "탐색"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "탐색",
+          "resolvedTextStyle": {
+            "fontSize": 19,
+            "color": "#17351B",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "탐색",
+              "fontSize": 19,
+              "color": "#17351B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 17,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/j654rax0",
+      "id": "17",
+      "name": "stage-page-3",
+      "bbox": [
+        558,
+        282,
+        164,
+        34
+      ],
+      "geometry": "rect",
+      "text": "맛집 탐색",
+      "textPreview": "맛집 탐색",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "color": "#57922F",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "맛집 탐색"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "맛집 탐색",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "color": "#57922F",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "맛집 탐색",
+              "fontSize": 16,
+              "color": "#57922F",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 18,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/sbe5ofeh",
+      "id": "18",
+      "name": "stage-detail-3",
+      "bbox": [
+        560,
+        325,
+        160,
+        70
+      ],
+      "geometry": "rect",
+      "text": "식당 목록\n지도·마커 비교",
+      "textPreview": "식당 목록 | 지도·마커 비교",
+      "resolvedFontSize": 15,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 15,
+        "typeface": "+mn-lt",
+        "color": "#516255",
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "식당 목록"
+          },
+          {
+            "index": 2,
+            "text": "지도·마커 비교"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "식당 목록",
+          "resolvedTextStyle": {
+            "fontSize": 15,
+            "color": "#516255",
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "식당 목록",
+              "fontSize": 15,
+              "color": "#516255",
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "지도·마커 비교",
+          "resolvedTextStyle": {
+            "fontSize": 15,
+            "color": "#516255",
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "지도·마커 비교",
+              "fontSize": 15,
+              "color": "#516255",
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 19,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/tcn6xkf2",
+      "id": "19",
+      "name": "stage-4",
+      "bbox": [
+        775,
+        198,
+        200,
+        222
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#E9F8D8",
+      "lineColor": "#9BCB72",
+      "lineWidth": 2
+    },
+    {
+      "order": 20,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/1s3m1k76",
+      "id": "20",
+      "name": "badge-4",
+      "bbox": [
+        849,
+        176,
+        52,
+        52
+      ],
+      "geometry": "ellipse",
+      "text": "04",
+      "textPreview": "04",
+      "resolvedFontSize": 15,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 15,
+        "typeface": "+mn-lt",
+        "color": "#FFFFFF",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "04"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "04",
+          "resolvedTextStyle": {
+            "fontSize": 15,
+            "color": "#FFFFFF",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "04",
+              "fontSize": 15,
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "#7DBC45",
+      "lineColor": "#F7FAF4",
+      "lineWidth": 4
+    },
+    {
+      "order": 21,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0ra58f6l",
+      "id": "21",
+      "name": "stage-title-4",
+      "bbox": [
+        793,
+        238,
+        164,
+        34
+      ],
+      "geometry": "rect",
+      "text": "상세 확인",
+      "textPreview": "상세 확인",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "color": "#17351B",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "상세 확인"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "상세 확인",
+          "resolvedTextStyle": {
+            "fontSize": 19,
+            "color": "#17351B",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "상세 확인",
+              "fontSize": 19,
+              "color": "#17351B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 22,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/fq14zap0",
+      "id": "22",
+      "name": "stage-page-4",
+      "bbox": [
+        793,
+        282,
+        164,
+        34
+      ],
+      "geometry": "rect",
+      "text": "식당 상세",
+      "textPreview": "식당 상세",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "color": "#57922F",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "식당 상세"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "식당 상세",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "color": "#57922F",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "식당 상세",
+              "fontSize": 16,
+              "color": "#57922F",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 23,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/epsn65ov",
+      "id": "23",
+      "name": "stage-detail-4",
+      "bbox": [
+        795,
+        325,
+        160,
+        70
+      ],
+      "geometry": "rect",
+      "text": "메뉴·사진·평점\n리뷰·위치 확인",
+      "textPreview": "메뉴·사진·평점 | 리뷰·위치 확인",
+      "resolvedFontSize": 15,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 15,
+        "typeface": "+mn-lt",
+        "color": "#516255",
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "메뉴·사진·평점"
+          },
+          {
+            "index": 2,
+            "text": "리뷰·위치 확인"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "메뉴·사진·평점",
+          "resolvedTextStyle": {
+            "fontSize": 15,
+            "color": "#516255",
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "메뉴·사진·평점",
+              "fontSize": 15,
+              "color": "#516255",
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "리뷰·위치 확인",
+          "resolvedTextStyle": {
+            "fontSize": 15,
+            "color": "#516255",
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "리뷰·위치 확인",
+              "fontSize": 15,
+              "color": "#516255",
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 24,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/pw3m5k7i",
+      "id": "24",
+      "name": "stage-5",
+      "bbox": [
+        1010,
+        198,
+        200,
+        222
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#DCF4C1",
+      "lineColor": "#65AA32",
+      "lineWidth": 2.6
+    },
+    {
+      "order": 25,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ovu5cf6x",
+      "id": "25",
+      "name": "badge-5",
+      "bbox": [
+        1084,
+        176,
+        52,
+        52
+      ],
+      "geometry": "ellipse",
+      "text": "05",
+      "textPreview": "05",
+      "resolvedFontSize": 15,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 15,
+        "typeface": "+mn-lt",
+        "color": "#FFFFFF",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "05"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "05",
+          "resolvedTextStyle": {
+            "fontSize": 15,
+            "color": "#FFFFFF",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "05",
+              "fontSize": 15,
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "#65AA32",
+      "lineColor": "#F7FAF4",
+      "lineWidth": 4
+    },
+    {
+      "order": 26,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/nul43upc",
+      "id": "26",
+      "name": "stage-title-5",
+      "bbox": [
+        1028,
+        238,
+        164,
+        34
+      ],
+      "geometry": "rect",
+      "text": "행동과 기록",
+      "textPreview": "행동과 기록",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "color": "#17351B",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "행동과 기록"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "행동과 기록",
+          "resolvedTextStyle": {
+            "fontSize": 19,
+            "color": "#17351B",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "행동과 기록",
+              "fontSize": 19,
+              "color": "#17351B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 27,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/2tcnapor",
+      "id": "27",
+      "name": "stage-page-5",
+      "bbox": [
+        1028,
+        282,
+        164,
+        34
+      ],
+      "geometry": "rect",
+      "text": "사용자 활동",
+      "textPreview": "사용자 활동",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "color": "#57922F",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "사용자 활동"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "사용자 활동",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "color": "#57922F",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "사용자 활동",
+              "fontSize": 16,
+              "color": "#57922F",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 28,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/50zmt07y",
+      "id": "28",
+      "name": "stage-detail-5",
+      "bbox": [
+        1030,
+        325,
+        160,
+        70
+      ],
+      "geometry": "rect",
+      "text": "길찾기·즐겨찾기\n리뷰·댓글 작성",
+      "textPreview": "길찾기·즐겨찾기 | 리뷰·댓글 작성",
+      "resolvedFontSize": 15,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 15,
+        "typeface": "+mn-lt",
+        "color": "#516255",
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "길찾기·즐겨찾기"
+          },
+          {
+            "index": 2,
+            "text": "리뷰·댓글 작성"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "길찾기·즐겨찾기",
+          "resolvedTextStyle": {
+            "fontSize": 15,
+            "color": "#516255",
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "길찾기·즐겨찾기",
+              "fontSize": 15,
+              "color": "#516255",
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "리뷰·댓글 작성",
+          "resolvedTextStyle": {
+            "fontSize": 15,
+            "color": "#516255",
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "리뷰·댓글 작성",
+              "fontSize": 15,
+              "color": "#516255",
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 29,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4zql0v6d",
+      "id": "29",
+      "bbox": [
+        270,
+        309,
+        35,
+        0
+      ],
+      "geometry": "straightConnector1",
+      "lineColor": "#5E7D62",
+      "lineWidth": 2.5
+    },
+    {
+      "order": 30,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/u5oja14b",
+      "id": "30",
+      "bbox": [
+        505,
+        309,
+        35,
+        0
+      ],
+      "geometry": "straightConnector1",
+      "lineColor": "#5E7D62",
+      "lineWidth": 2.5
+    },
+    {
+      "order": 31,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/v6xk365w",
+      "id": "31",
+      "bbox": [
+        740,
+        309,
+        35,
+        0
+      ],
+      "geometry": "straightConnector1",
+      "lineColor": "#5E7D62",
+      "lineWidth": 2.5
+    },
+    {
+      "order": 32,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/w761cbmh",
+      "id": "32",
+      "bbox": [
+        975,
+        309,
+        35,
+        0
+      ],
+      "geometry": "straightConnector1",
+      "lineColor": "#5E7D62",
+      "lineWidth": 2.5
+    },
+    {
+      "order": 33,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/h8f25wn2",
+      "id": "33",
+      "name": "account-lane",
+      "bbox": [
+        70,
+        475,
+        1140,
+        152
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#EFF7E9",
+      "lineColor": "#B2CF9A",
+      "lineWidth": 1.5
+    },
+    {
+      "order": 34,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/i98je14n",
+      "id": "34",
+      "name": "account-label",
+      "bbox": [
+        92,
+        493,
+        150,
+        31
+      ],
+      "geometry": "rect",
+      "text": "회원 기능",
+      "textPreview": "회원 기능",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 18,
+        "typeface": "+mn-lt",
+        "color": "#34523A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "회원 기능"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "회원 기능",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "color": "#34523A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "회원 기능",
+              "fontSize": 18,
+              "color": "#34523A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 35,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/3uhk765s",
+      "id": "35",
+      "name": "account-caption",
+      "bbox": [
+        245,
+        493,
+        690,
+        31
+      ],
+      "geometry": "rect",
+      "text": "탐색은 비회원도 가능하고, 로그인하면 개인 기록이 이어집니다",
+      "textPreview": "탐색은 비회원도 가능하고, 로그인하면 개인 기록이 이어집니다",
+      "resolvedFontSize": 15,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 15,
+        "typeface": "+mn-lt",
+        "color": "#657768",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "탐색은 비회원도 가능하고, 로그인하면 개인 기록이 이어집니다"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "탐색은 비회원도 가능하고, 로그인하면 개인 기록이 이어집니다",
+          "resolvedTextStyle": {
+            "fontSize": 15,
+            "color": "#657768",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "탐색은 비회원도 가능하고, 로그인하면 개인 기록이 이어집니다",
+              "fontSize": 15,
+              "color": "#657768",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 36,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4vq1gbmd",
+      "id": "36",
+      "name": "join",
+      "bbox": [
+        270,
+        546,
+        210,
+        54
+      ],
+      "geometry": "roundRect",
+      "text": "회원가입 · 로그인",
+      "textPreview": "회원가입 · 로그인",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "color": "#35513A",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "회원가입 · 로그인"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "회원가입 · 로그인",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "color": "#35513A",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "회원가입 · 로그인",
+              "fontSize": 16,
+              "color": "#35513A",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "#FFFFFF",
+      "lineColor": "#A5C88A",
+      "lineWidth": 1.8
+    },
+    {
+      "order": 37,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/5wz29gny",
+      "id": "37",
+      "name": "profile",
+      "bbox": [
+        535,
+        546,
+        210,
+        54
+      ],
+      "geometry": "roundRect",
+      "text": "프로필 · 마이페이지",
+      "textPreview": "프로필 · 마이페이지",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "color": "#35513A",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "프로필 · 마이페이지"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "프로필 · 마이페이지",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "color": "#35513A",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "프로필 · 마이페이지",
+              "fontSize": 16,
+              "color": "#35513A",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "#FFFFFF",
+      "lineColor": "#A5C88A",
+      "lineWidth": 1.8
+    },
+    {
+      "order": 38,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/yd4j2h43",
+      "id": "38",
+      "name": "history",
+      "bbox": [
+        800,
+        546,
+        210,
+        54
+      ],
+      "geometry": "roundRect",
+      "text": "즐겨찾기 · 내 활동",
+      "textPreview": "즐겨찾기 · 내 활동",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "color": "#35513A",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "즐겨찾기 · 내 활동"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "즐겨찾기 · 내 활동",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "color": "#35513A",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "즐겨찾기 · 내 활동",
+              "fontSize": 16,
+              "color": "#35513A",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "#FFFFFF",
+      "lineColor": "#A5C88A",
+      "lineWidth": 1.8
+    },
+    {
+      "order": 39,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/zydkvm5o",
+      "id": "39",
+      "bbox": [
+        480,
+        573,
+        55,
+        0
+      ],
+      "geometry": "straightConnector1",
+      "lineColor": "#78917B",
+      "lineWidth": 2
+    },
+    {
+      "order": 40,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/fil8jetg",
+      "id": "40",
+      "bbox": [
+        745,
+        573,
+        55,
+        0
+      ],
+      "geometry": "straightConnector1",
+      "lineColor": "#78917B",
+      "lineWidth": 2
+    },
+    {
+      "order": 41,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ehcra9sv",
+      "id": "41",
+      "name": "footer-note",
+      "bbox": [
+        280,
+        646,
+        720,
+        25
+      ],
+      "geometry": "rect",
+      "text": "공통 헤더 검색은 어느 화면에서든 다시 탐색 흐름으로 연결됩니다",
+      "textPreview": "공통 헤더 검색은 어느 화면에서든 다시 탐색 흐름으로 연결됩니다",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 14,
+        "typeface": "+mn-lt",
+        "color": "#6A7E6D",
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "공통 헤더 검색은 어느 화면에서든 다시 탐색 흐름으로 연결됩니다"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "공통 헤더 검색은 어느 화면에서든 다시 탐색 흐름으로 연결됩니다",
+          "resolvedTextStyle": {
+            "fontSize": 14,
+            "color": "#6A7E6D",
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "공통 헤더 검색은 어느 화면에서든 다시 탐색 흐름으로 연결됩니다",
+              "fontSize": 14,
+              "color": "#6A7E6D",
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

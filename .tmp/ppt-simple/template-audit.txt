@@ -1,0 +1,1 @@
+Source deck contains one 16:9 slide with a green outer frame, centered title, horizontal core flow, and a compact supporting member-flow row. The simplified copy preserves all source geometry, typography, connectors, colors, master, and layout. Only six inherited text objects are shortened.

@@ -1,0 +1,27 @@
+{"kind":"deck","id":"pr/c37bae","name":"Deck"}
+{"kind":"layout","layoutId":"1176a88e-9661-4376-a49c-b70e2ad5845b","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"ab5a12a6-bbe3-4752-a18b-b99df70b5f0d","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/w4e5qj","slide":1,"title":"봄내로그 사용자 흐름","textShapes":11}
+{"kind":"shape","id":"sh/ojepw3e1","slide":1,"name":"green-frame","bbox":[26,24,1228,672]}
+{"kind":"textbox","id":"sh/ni583yxg","slide":1,"name":"slide-title","text":"봄내로그 사용자 흐름","textPreview":"봄내로그 사용자 흐름","textChars":11,"textLines":1,"bbox":[72,48,1136,54]}
+{"kind":"textbox","id":"sh/2hw7utgv","slide":1,"name":"slide-subtitle","text":"탐색은 상세 정보로 이어지고, 사용자 기능은 필요한 순간에 연결됩니다","textPreview":"탐색은 상세 정보로 이어지고, 사용자 기능은 필요한 순간에 연결됩니다","textChars":38,"textLines":1,"bbox":[300,100,680,34]}
+{"kind":"textbox","id":"sh/1g3q1ofa","slide":1,"name":"home","text":"메인 화면","textPreview":"메인 화면","textChars":5,"textLines":1,"bbox":[535,150,210,70]}
+{"kind":"textbox","id":"sh/0fupsjyp","slide":1,"name":"search-region","text":"검색 · 지역 선택","textPreview":"검색 · 지역 선택","textChars":10,"textLines":1,"bbox":[285,278,210,66]}
+{"kind":"textbox","id":"sh/fel8zex4","slide":1,"name":"restaurant-explorer","text":"맛집 탐색","textPreview":"맛집 탐색","textChars":5,"textLines":1,"bbox":[535,278,210,66]}
+{"kind":"textbox","id":"sh/edc7q9gz","slide":1,"name":"account","text":"로그인 · 회원가입","textPreview":"로그인 · 회원가입","textChars":10,"textLines":1,"bbox":[880,278,210,66]}
+{"kind":"textbox","id":"sh/dc3qx4fe","slide":1,"name":"list-map","text":"식당 목록 · 지도","textPreview":"식당 목록 · 지도","textChars":10,"textLines":1,"bbox":[535,402,210,66]}
+{"kind":"textbox","id":"sh/sbupojyt","slide":1,"name":"service-info","text":"서비스 소개\n소식 · 공지","textPreview":"서비스 소개 | 소식 · 공지","textChars":14,"textLines":2,"bbox":[135,152,180,66]}
+{"kind":"textbox","id":"sh/2h836pcn","slide":1,"name":"mypage","text":"마이페이지","textPreview":"마이페이지","textChars":5,"textLines":1,"bbox":[990,420,190,76]}
+{"kind":"textbox","id":"sh/3i1kzat8","slide":1,"name":"restaurant-detail","text":"식당 상세 정보","textPreview":"식당 상세 정보","textChars":8,"textLines":1,"bbox":[535,526,210,66]}
+{"kind":"textbox","id":"sh/43al8fud","slide":1,"name":"detail-actions","text":"길찾기 · 리뷰 · 즐겨찾기","textPreview":"길찾기 · 리뷰 · 즐겨찾기","textChars":15,"textLines":1,"bbox":[465,626,350,48]}
+{"kind":"shape","id":"sh/p4j21kby","slide":1,"bbox":[390,220,250,58]}
+{"kind":"shape","id":"sh/ud8325cb","slide":1,"bbox":[640,220,0,58]}
+{"kind":"shape","id":"sh/fehkvatw","slide":1,"bbox":[640,220,345,58]}
+{"kind":"shape","id":"sh/gfql4fuh","slide":1,"bbox":[315,185,220,0]}
+{"kind":"shape","id":"sh/hgz2xkb2","slide":1,"bbox":[495,311,40,0]}
+{"kind":"shape","id":"sh/69ojy5cf","slide":1,"bbox":[640,344,0,58]}
+{"kind":"shape","id":"sh/7axk7qt0","slide":1,"bbox":[640,468,0,58]}
+{"kind":"shape","id":"sh/bed0z69s","slide":1,"bbox":[640,592,0,34]}
+{"kind":"shape","id":"sh/at4z61s7","slide":1,"bbox":[985,344,100,76]}
+{"kind":"shape","id":"sh/xgvi1wri","slide":1,"bbox":[745,458,245,101]}
+{"kind":"notes","id":"nt/w4e5qj","slide":1,"text":"[Sources]\n- Repository README.md: page structure, restaurant exploration, map, detail, search, favorites, and routing flow.\n- Repository docs/auth-guide.md: authentication cookie, profile menu, and My Page linkage.\n- User-provided screenshot: green border, rounded node styling, and overall visual direction."}

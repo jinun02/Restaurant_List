@@ -1,0 +1,38 @@
+{"kind":"deck","id":"pr/w9wcrp","name":"Deck"}
+{"kind":"layout","layoutId":"/ppt/slideMasters/slideMaster1.xml","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout1.xml","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/y90nupkv","slide":1,"title":"봄내로그 페이지 구성과 사용자 흐름","textShapes":18}
+{"kind":"shape","id":"sh/i1gje90j","slide":1,"name":"green-frame","bbox":[26,24,1228,672]}
+{"kind":"textbox","id":"sh/547294r6","slide":1,"name":"title","text":"봄내로그 페이지 구성과 사용자 흐름","textPreview":"봄내로그 페이지 구성과 사용자 흐름","textChars":19,"textLines":1,"bbox":[72,48,1136,48]}
+{"kind":"textbox","id":"sh/k3yl0zql","slide":1,"name":"subtitle","text":"핵심 화면 이동과 회원 기능을 한눈에 정리","textPreview":"핵심 화면 이동과 회원 기능을 한눈에 정리","textChars":23,"textLines":1,"bbox":[350,97,580,28]}
+{"kind":"textbox","id":"sh/7qp4be9c","slide":1,"name":"home","text":"메인 화면","textPreview":"메인 화면","textChars":5,"textLines":1,"bbox":[60,290,160,72]}
+{"kind":"textbox","id":"sh/65g3298r","slide":1,"name":"search","text":"헤더 통합 검색","textPreview":"헤더 통합 검색","textChars":8,"textLines":1,"bbox":[270,238,180,58]}
+{"kind":"textbox","id":"sh/ts7md4r2","slide":1,"name":"region","text":"지역 선택","textPreview":"지역 선택","textChars":5,"textLines":1,"bbox":[270,356,180,58]}
+{"kind":"textbox","id":"sh/sryl4zqx","slide":1,"name":"filter","text":"지역 · 업종 선택","textPreview":"지역 · 업종 선택","textChars":10,"textLines":1,"bbox":[500,290,180,72]}
+{"kind":"textbox","id":"sh/fu94fe98","slide":1,"name":"explorer","text":"맛집 목록\n지도 확인","textPreview":"맛집 목록 | 지도 확인","textChars":11,"textLines":2,"bbox":[730,290,180,72]}
+{"kind":"textbox","id":"sh/utg3698n","slide":1,"name":"detail","text":"식당 상세 정보","textPreview":"식당 상세 정보","textChars":8,"textLines":1,"bbox":[960,290,180,72]}
+{"kind":"textbox","id":"sh/wn6dc7eh","slide":1,"name":"directions","text":"길찾기","textPreview":"길찾기","textChars":3,"textLines":1,"bbox":[1150,226,90,48]}
+{"kind":"textbox","id":"sh/hofulsf2","slide":1,"name":"reviews","text":"리뷰 · 댓글","textPreview":"리뷰 · 댓글","textChars":7,"textLines":1,"bbox":[1150,302,90,48]}
+{"kind":"textbox","id":"sh/ul4vaxgb","slide":1,"name":"favorites","text":"즐겨찾기","textPreview":"즐겨찾기","textChars":4,"textLines":1,"bbox":[1150,378,90,48]}
+{"kind":"textbox","id":"sh/vmdcj2xw","slide":1,"name":"content","text":"서비스 소개\n소식 · 공지","textPreview":"서비스 소개 | 소식 · 공지","textChars":14,"textLines":2,"bbox":[60,158,160,66]}
+{"kind":"textbox","id":"sh/4r6dg7et","slide":1,"name":"auth","text":"로그인 · 회원가입","textPreview":"로그인 · 회원가입","textChars":10,"textLines":1,"bbox":[60,470,180,60]}
+{"kind":"textbox","id":"sh/5sfepcfe","slide":1,"name":"account-find","text":"계정 찾기","textPreview":"계정 찾기","textChars":5,"textLines":1,"bbox":[300,455,205,52]}
+{"kind":"textbox","id":"sh/ipovexwn","slide":1,"name":"profile","text":"마이페이지","textPreview":"마이페이지","textChars":5,"textLines":1,"bbox":[300,530,205,52]}
+{"kind":"textbox","id":"sh/3qxwn2x8","slide":1,"name":"activity","text":"즐겨찾기 · 활동","textPreview":"즐겨찾기 · 활동","textChars":9,"textLines":1,"bbox":[565,530,190,52]}
+{"kind":"shape","id":"sh/t0jyd0ru","slide":1,"bbox":[220,267,50,59]}
+{"kind":"shape","id":"sh/6x8f2583","slide":1,"bbox":[220,326,50,59]}
+{"kind":"shape","id":"sh/7yhgbq9o","slide":1,"bbox":[450,267,140,23]}
+{"kind":"shape","id":"sh/kvqx0vqd","slide":1,"bbox":[450,362,140,23]}
+{"kind":"shape","id":"sh/lwzy90ry","slide":1,"bbox":[680,326,50,0]}
+{"kind":"shape","id":"sh/yt8fyl87","slide":1,"bbox":[910,326,50,0]}
+{"kind":"shape","id":"sh/juhg7q9s","slide":1,"bbox":[1140,250,10,76]}
+{"kind":"shape","id":"sh/wr6xwbq1","slide":1,"bbox":[1140,326,10,0]}
+{"kind":"shape","id":"sh/xsfy5grm","slide":1,"bbox":[1140,326,10,76]}
+{"kind":"shape","id":"sh/dc7md8fe","slide":1,"bbox":[140,224,0,66]}
+{"kind":"shape","id":"sh/cby5k3yt","slide":1,"bbox":[140,362,10,108]}
+{"kind":"shape","id":"sh/ra54bix8","slide":1,"bbox":[240,481,60,19]}
+{"kind":"shape","id":"sh/q9wnidgn","slide":1,"bbox":[240,500,60,56]}
+{"kind":"shape","id":"sh/5onm98f2","slide":1,"bbox":[505,556,60,0]}
+{"kind":"textbox","id":"sh/wzy1szid","slide":1,"name":"guide-core","text":"핵심 탐색 흐름","textPreview":"핵심 탐색 흐름","textChars":8,"textLines":1,"bbox":[510,198,160,25]}
+{"kind":"textbox","id":"sh/h072l4jy","slide":1,"name":"guide-account","text":"회원 기능 보조 흐름","textPreview":"회원 기능 보조 흐름","textChars":11,"textLines":1,"bbox":[60,604,695,24]}
+{"kind":"notes","id":"nt/y90nupkv","slide":1,"text":"[Sources]\n- Repository README.md: main page, search, region/category filtering, restaurant list/map, restaurant detail, directions, reviews/comments, favorites, and supporting content.\n- Repository docs/auth-guide.md: login/signup, account recovery, profile menu, My Page, and user activity.\n- Previous generated version supplied in this task: retained its information hierarchy and green styling while changing the central orientation to horizontal."}

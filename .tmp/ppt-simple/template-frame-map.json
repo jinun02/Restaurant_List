@@ -1,0 +1,19 @@
+{
+  "outputSlides": [
+    {
+      "outputSlide": 1,
+      "sourceSlide": 1,
+      "narrativeRole": "간결한 사용자 흐름 요약",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/qlobqlsn", "action": "rewrite" },
+        { "sourceElementId": "sh/2xobm1sr", "action": "rewrite" },
+        { "sourceElementId": "sh/9gjutkrm", "action": "rewrite" },
+        { "sourceElementId": "sh/ri5gz2xw", "action": "rewrite" },
+        { "sourceElementId": "sh/cjexs7eh", "action": "rewrite" },
+        { "sourceElementId": "sh/dkny1cf2", "action": "rewrite" }
+      ]
+    }
+  ],
+  "omittedSourceSlides": []
+}

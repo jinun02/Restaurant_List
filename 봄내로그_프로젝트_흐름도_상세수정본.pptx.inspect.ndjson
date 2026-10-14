@@ -1,0 +1,34 @@
+{"kind":"deck","id":"pr/cowsqt","name":"Deck"}
+{"kind":"layout","layoutId":"944baa33-7b00-40ee-ae29-0d6677a43fd7","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"b629922b-e4b0-4353-95d5-9ea50250e3be","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/s54j96","slide":1,"title":"봄내로그 페이지 구성과 사용자 흐름","textShapes":15}
+{"kind":"shape","id":"sh/h0ze9w3u","slide":1,"name":"green-frame","bbox":[26,24,1228,672]}
+{"kind":"textbox","id":"sh/ux8vy14j","slide":1,"name":"slide-title","text":"봄내로그 페이지 구성과 사용자 흐름","textPreview":"봄내로그 페이지 구성과 사용자 흐름","textChars":19,"textLines":1,"bbox":[72,42,1136,50]}
+{"kind":"textbox","id":"sh/fyhw76lo","slide":1,"name":"slide-subtitle","text":"메인 화면에서 탐색·상세·회원 기능으로 이어지는 주요 경로","textPreview":"메인 화면에서 탐색·상세·회원 기능으로 이어지는 주요 경로","textChars":32,"textLines":1,"bbox":[280,91,720,30]}
+{"kind":"textbox","id":"sh/sv6dwrmd","slide":1,"name":"home","text":"메인 화면","textPreview":"메인 화면","textChars":5,"textLines":1,"bbox":[535,132,210,62]}
+{"kind":"textbox","id":"sh/twfe5w3y","slide":1,"name":"content","text":"서비스 소개\n소식 · 공지","textPreview":"서비스 소개 | 소식 · 공지","textChars":14,"textLines":2,"bbox":[80,132,180,62]}
+{"kind":"textbox","id":"sh/6tovuh47","slide":1,"name":"header-search","text":"헤더 통합 검색","textPreview":"헤더 통합 검색","textChars":8,"textLines":1,"bbox":[290,238,190,58]}
+{"kind":"textbox","id":"sh/7uxw3mls","slide":1,"name":"region-select","text":"지역 선택","textPreview":"지역 선택","textChars":5,"textLines":1,"bbox":[545,238,190,58]}
+{"kind":"textbox","id":"sh/crax8vmh","slide":1,"name":"auth","text":"로그인 · 회원가입","textPreview":"로그인 · 회원가입","textChars":10,"textLines":1,"bbox":[925,238,210,58]}
+{"kind":"textbox","id":"sh/dsjehg32","slide":1,"name":"filters","text":"동네 · 업종 필터","textPreview":"동네 · 업종 필터","textChars":10,"textLines":1,"bbox":[545,330,190,58]}
+{"kind":"textbox","id":"sh/dgzy9wfq","slide":1,"name":"account-find","text":"아이디 · 비밀번호 찾기","textPreview":"아이디 · 비밀번호 찾기","textChars":13,"textLines":1,"bbox":[840,340,200,54]}
+{"kind":"textbox","id":"sh/cfqxgry5","slide":1,"name":"profile","text":"프로필 · 마이페이지","textPreview":"프로필 · 마이페이지","textChars":11,"textLines":1,"bbox":[1050,340,170,54]}
+{"kind":"textbox","id":"sh/behg7mxk","slide":1,"name":"explorer","text":"식당 목록 · 지도 · 마커","textPreview":"식당 목록 · 지도 · 마커","textChars":15,"textLines":1,"bbox":[515,422,250,60]}
+{"kind":"textbox","id":"sh/qd8fe1gz","slide":1,"name":"detail","text":"식당 상세 정보","textPreview":"식당 상세 정보","textChars":8,"textLines":1,"bbox":[535,514,210,60]}
+{"kind":"textbox","id":"sh/pczy5wze","slide":1,"name":"directions","text":"길찾기","textPreview":"길찾기","textChars":3,"textLines":1,"bbox":[320,625,170,46]}
+{"kind":"textbox","id":"sh/4b6xcryt","slide":1,"name":"reviews","text":"리뷰 · 댓글","textPreview":"리뷰 · 댓글","textChars":7,"textLines":1,"bbox":[555,625,170,46]}
+{"kind":"textbox","id":"sh/3axg3mho","slide":1,"name":"favorites","text":"즐겨찾기","textPreview":"즐겨찾기","textChars":4,"textLines":1,"bbox":[790,625,170,46]}
+{"kind":"shape","id":"sh/29ofahg3","slide":1,"bbox":[260,163,275,0]}
+{"kind":"shape","id":"sh/98jyhgfy","slide":1,"bbox":[385,194,255,44]}
+{"kind":"shape","id":"sh/87ahobyd","slide":1,"bbox":[640,194,0,44]}
+{"kind":"shape","id":"sh/sn290jal","slide":1,"bbox":[745,163,285,75]}
+{"kind":"shape","id":"sh/tobq9or6","slide":1,"bbox":[385,296,160,63]}
+{"kind":"shape","id":"sh/6lkry9sf","slide":1,"bbox":[640,296,0,34]}
+{"kind":"shape","id":"sh/7mt87e90","slide":1,"bbox":[940,296,90,44]}
+{"kind":"shape","id":"sh/kzi9wjap","slide":1,"bbox":[1030,296,105,44]}
+{"kind":"shape","id":"sh/50rq5ora","slide":1,"bbox":[640,388,0,34]}
+{"kind":"shape","id":"sh/ix0ru9sj","slide":1,"bbox":[640,482,0,32]}
+{"kind":"shape","id":"sh/jy983e94","slide":1,"bbox":[405,574,235,51]}
+{"kind":"shape","id":"sh/wvi9szad","slide":1,"bbox":[640,574,0,51]}
+{"kind":"shape","id":"sh/xwrq14ry","slide":1,"bbox":[640,574,235,51]}
+{"kind":"notes","id":"nt/s54j96","slide":1,"text":"[Sources]\n- Repository README.md: main, search, region/category filtering, restaurant list/map, detail, directions, reviews/comments, favorites, and page routing.\n- Repository docs/auth-guide.md: login/signup, account recovery, profile menu, and My Page flow.\n- User-provided images: preferred diagram density and the green rounded-box visual direction."}

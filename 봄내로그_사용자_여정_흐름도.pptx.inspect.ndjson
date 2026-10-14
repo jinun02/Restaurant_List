@@ -1,0 +1,46 @@
+{"kind":"deck","id":"pr/qth1ib","name":"Deck"}
+{"kind":"layout","layoutId":"ef18808d-6016-4620-bd60-200f211da37e","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"cf201a68-8887-427e-a368-f80b5a0f1f62","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/3dqk2k","slide":1,"title":"맛집을 발견하고 기록하기까지","textShapes":28}
+{"kind":"shape","id":"sh/e9sjut8f","slide":1,"name":"green-frame","bbox":[26,24,1228,672]}
+{"kind":"textbox","id":"sh/1cj2p8r6","slide":1,"name":"title","text":"맛집을 발견하고 기록하기까지","textPreview":"맛집을 발견하고 기록하기까지","textChars":15,"textLines":1,"bbox":[72,47,1136,48]}
+{"kind":"textbox","id":"sh/0ba1w3ql","slide":1,"name":"subtitle","text":"봄내로그의 핵심 사용자 여정","textPreview":"봄내로그의 핵심 사용자 여정","textChars":15,"textLines":1,"bbox":[400,96,480,26]}
+{"kind":"shape","id":"sh/nylkri9c","slide":1,"name":"stage-1","bbox":[70,198,200,222]}
+{"kind":"textbox","id":"sh/2dcjyd8r","slide":1,"name":"badge-1","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[144,176,52,52]}
+{"kind":"textbox","id":"sh/p032t8r2","slide":1,"name":"stage-title-1","text":"발견","textPreview":"발견","textChars":2,"textLines":1,"bbox":[88,238,164,34]}
+{"kind":"textbox","id":"sh/ozu103qx","slide":1,"name":"stage-page-1","text":"메인 화면","textPreview":"메인 화면","textChars":5,"textLines":1,"bbox":[88,282,164,34]}
+{"kind":"textbox","id":"sh/b2lkvi98","slide":1,"name":"stage-detail-1","text":"추천 맛집\n지역·소식 확인","textPreview":"추천 맛집 | 지역·소식 확인","textChars":14,"textLines":2,"bbox":[90,325,160,70]}
+{"kind":"shape","id":"sh/a1cj2d8n","slide":1,"name":"stage-2","bbox":[305,198,200,222]}
+{"kind":"textbox","id":"sh/w3u5gve9","slide":1,"name":"badge-2","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[379,176,52,52]}
+{"kind":"textbox","id":"sh/h43mp0fu","slide":1,"name":"stage-title-2","text":"검색과 필터","textPreview":"검색과 필터","textChars":6,"textLines":1,"bbox":[323,238,164,34]}
+{"kind":"textbox","id":"sh/ahcnelwj","slide":1,"name":"stage-page-2","text":"통합 검색","textPreview":"통합 검색","textChars":5,"textLines":1,"bbox":[323,282,164,34]}
+{"kind":"textbox","id":"sh/vil4nqxo","slide":1,"name":"stage-detail-2","text":"동네 선택\n업종별 필터","textPreview":"동네 선택 | 업종별 필터","textChars":12,"textLines":2,"bbox":[325,325,160,70]}
+{"kind":"shape","id":"sh/47e5kfel","slide":1,"name":"stage-3","bbox":[540,198,200,222]}
+{"kind":"textbox","id":"sh/58nmtkf6","slide":1,"name":"badge-3","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[614,176,52,52]}
+{"kind":"textbox","id":"sh/i5cni5wf","slide":1,"name":"stage-title-3","text":"탐색","textPreview":"탐색","textChars":2,"textLines":1,"bbox":[558,238,164,34]}
+{"kind":"textbox","id":"sh/j654rax0","slide":1,"name":"stage-page-3","text":"맛집 탐색","textPreview":"맛집 탐색","textChars":5,"textLines":1,"bbox":[558,282,164,34]}
+{"kind":"textbox","id":"sh/sbe5ofeh","slide":1,"name":"stage-detail-3","text":"식당 목록\n지도·마커 비교","textPreview":"식당 목록 | 지도·마커 비교","textChars":14,"textLines":2,"bbox":[560,325,160,70]}
+{"kind":"shape","id":"sh/tcn6xkf2","slide":1,"name":"stage-4","bbox":[775,198,200,222]}
+{"kind":"textbox","id":"sh/1s3m1k76","slide":1,"name":"badge-4","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[849,176,52,52]}
+{"kind":"textbox","id":"sh/0ra58f6l","slide":1,"name":"stage-title-4","text":"상세 확인","textPreview":"상세 확인","textChars":5,"textLines":1,"bbox":[793,238,164,34]}
+{"kind":"textbox","id":"sh/fq14zap0","slide":1,"name":"stage-page-4","text":"식당 상세","textPreview":"식당 상세","textChars":5,"textLines":1,"bbox":[793,282,164,34]}
+{"kind":"textbox","id":"sh/epsn65ov","slide":1,"name":"stage-detail-4","text":"메뉴·사진·평점\n리뷰·위치 확인","textPreview":"메뉴·사진·평점 | 리뷰·위치 확인","textChars":17,"textLines":2,"bbox":[795,325,160,70]}
+{"kind":"shape","id":"sh/pw3m5k7i","slide":1,"name":"stage-5","bbox":[1010,198,200,222]}
+{"kind":"textbox","id":"sh/ovu5cf6x","slide":1,"name":"badge-5","text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1084,176,52,52]}
+{"kind":"textbox","id":"sh/nul43upc","slide":1,"name":"stage-title-5","text":"행동과 기록","textPreview":"행동과 기록","textChars":6,"textLines":1,"bbox":[1028,238,164,34]}
+{"kind":"textbox","id":"sh/2tcnapor","slide":1,"name":"stage-page-5","text":"사용자 활동","textPreview":"사용자 활동","textChars":6,"textLines":1,"bbox":[1028,282,164,34]}
+{"kind":"textbox","id":"sh/50zmt07y","slide":1,"name":"stage-detail-5","text":"길찾기·즐겨찾기\n리뷰·댓글 작성","textPreview":"길찾기·즐겨찾기 | 리뷰·댓글 작성","textChars":17,"textLines":2,"bbox":[1030,325,160,70]}
+{"kind":"shape","id":"sh/4zql0v6d","slide":1,"bbox":[270,309,35,0]}
+{"kind":"shape","id":"sh/u5oja14b","slide":1,"bbox":[505,309,35,0]}
+{"kind":"shape","id":"sh/v6xk365w","slide":1,"bbox":[740,309,35,0]}
+{"kind":"shape","id":"sh/w761cbmh","slide":1,"bbox":[975,309,35,0]}
+{"kind":"shape","id":"sh/h8f25wn2","slide":1,"name":"account-lane","bbox":[70,475,1140,152]}
+{"kind":"textbox","id":"sh/i98je14n","slide":1,"name":"account-label","text":"회원 기능","textPreview":"회원 기능","textChars":5,"textLines":1,"bbox":[92,493,150,31]}
+{"kind":"textbox","id":"sh/3uhk765s","slide":1,"name":"account-caption","text":"탐색은 비회원도 가능하고, 로그인하면 개인 기록이 이어집니다","textPreview":"탐색은 비회원도 가능하고, 로그인하면 개인 기록이 이어집니다","textChars":33,"textLines":1,"bbox":[245,493,690,31]}
+{"kind":"textbox","id":"sh/4vq1gbmd","slide":1,"name":"join","text":"회원가입 · 로그인","textPreview":"회원가입 · 로그인","textChars":10,"textLines":1,"bbox":[270,546,210,54]}
+{"kind":"textbox","id":"sh/5wz29gny","slide":1,"name":"profile","text":"프로필 · 마이페이지","textPreview":"프로필 · 마이페이지","textChars":11,"textLines":1,"bbox":[535,546,210,54]}
+{"kind":"textbox","id":"sh/yd4j2h43","slide":1,"name":"history","text":"즐겨찾기 · 내 활동","textPreview":"즐겨찾기 · 내 활동","textChars":11,"textLines":1,"bbox":[800,546,210,54]}
+{"kind":"shape","id":"sh/zydkvm5o","slide":1,"bbox":[480,573,55,0]}
+{"kind":"shape","id":"sh/fil8jetg","slide":1,"bbox":[745,573,55,0]}
+{"kind":"textbox","id":"sh/ehcra9sv","slide":1,"name":"footer-note","text":"공통 헤더 검색은 어느 화면에서든 다시 탐색 흐름으로 연결됩니다","textPreview":"공통 헤더 검색은 어느 화면에서든 다시 탐색 흐름으로 연결됩니다","textChars":35,"textLines":1,"bbox":[280,646,720,25]}
+{"kind":"notes","id":"nt/3dqk2k","slide":1,"text":"[Sources]\n- Repository README.md: main page, search, region/category filtering, restaurant list and maps, restaurant detail, directions, reviews/comments, favorites, and My Page.\n- Repository docs/auth-guide.md: signup/login, profile menu, session state, and user activity linkage.\n- Earlier user-provided slide image: retained green visual family only; the journey structure is newly composed."}

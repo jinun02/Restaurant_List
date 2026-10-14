@@ -1,0 +1,1 @@
+Project flow based on repository README.md and docs/auth-guide.md. User-provided screenshot used as visual reference only.
